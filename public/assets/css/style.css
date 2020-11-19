@@ -1,0 +1,13 @@
+body{
+    margin: 15px;
+}
+.img-inquisitor-witch{
+    width: 75%;
+    height: auto;
+}
+
+.card-img-inquisitor{
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+}
