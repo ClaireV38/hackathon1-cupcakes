@@ -2,12 +2,25 @@
 
 {% block title %}Welcome{% endblock %}
 
+{% block stylesheet %}
+<link href="https://fonts.googleapis.com/css2?family=Palanquin+Dark:wght@700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet">
+{% endblock stylesheet %}
+
 {% block content %}
-    <div class="homePage">
-        <h2 class="primaryTitle">Welcome fellow witch-hunter!</h2>
-        <div class="homeLinks">
-            <a href="Inquisitor/bounty" class="homeButton">I’m an inquisitor in mission</a>
-            <a href="Citizen/denounce" class="homeButton">I am a simple citizen</a>
-        </div>
+<div class="homepage-content-block">
+    <div>
+        <h1 class="homepage-title">Is your neighbor a witch ?</h1>
     </div>
+
+    <div class="btn-div">
+        {% if app.inquisitor %}
+            <a href="Inquisitor/bounty" class="homeButton">I’m a witch hunter</a>
+        {% else %}
+            <a href="/Inquisitor/signIn" class="homeButton">I’m a witch hunter</a>
+        {% endif %}
+        <a href="Citizen/denounce" class="homeButton">I'm a citizen</a>
+    </div>
+</div>
 {% endblock %}
