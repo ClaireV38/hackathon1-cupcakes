@@ -1,5 +1,8 @@
 const video = document.getElementById("video");
 const canvas = document.getElementById('photo');
+const snapshotButton = document.getElementById('snapshot-button');
+
+snapshotButton.addEventListener('click', snapshot);
 
 function startVideo() {
     navigator.getUserMedia = ( navigator.getUserMedia ||
