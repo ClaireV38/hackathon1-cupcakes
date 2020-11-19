@@ -13,10 +13,10 @@
 </head>
 
 <body class="home-page-body">
-<nav class="navbar navbar-expand-lg navbar-light bg-light row">
+<nav class="navbar navbar-light bg-light">
     <a class="navbar-brand" href="/"><img src="/assets/images/witch.png" class="logo"></a>
     {% if app.inquisitor %}
-        <a href="/Inquisitor/logout" class="logoutbtn btn btn-outline-danger my-2 my-sm-0 col-2">Logout</a>
+        <a href="/Inquisitor/logout" class="btn btn-outline-danger" id="logoutbtn">Logout</a>
     {% endif %}
 </nav>
 

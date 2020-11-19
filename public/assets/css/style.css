@@ -28,13 +28,18 @@
 nav{
     opacity: 0.80;
     height: 55px;
-    display: flex;
-    flex-wrap: nowrap;
+    margin: 0;
+    align-content: center;
+    justify-content: space-between;
 }
 
 .logo {
     height: 30px;
     width: 30px;
+}
+
+#logoutbtn{
+    width: 30%;
 }
 
 /*
