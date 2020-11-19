@@ -38,7 +38,7 @@ class InquisitorController extends AbstractController
                     $inquisitorManager->addInquisitor($inquisitor);
                     header('Location:/inquisitor/signin');
                 } catch (\PDOException $e) {
-                    $errors['form'] = 'Registration number already use by an inquisitor, please contact the Kingdom';
+                    $errors['form'] = 'Registration number already used by an inquisitor, please contact the Kingdom';
                 }
             }
         }
