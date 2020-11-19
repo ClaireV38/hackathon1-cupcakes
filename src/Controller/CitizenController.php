@@ -17,7 +17,14 @@ class CitizenController extends AbstractController
 
     public function index()
     {
+
         $questions = $this->witchManager->selectAll();
-        return $this->twig->render('Citizen/denounce.html.twig', ['questions' => $questions]);
+
+
+
+
+        return $this->twig->render('Citizen/denounce.html.twig', [
+            'questions' => $questions
+        ]);
     }
 }
