@@ -45,4 +45,3 @@ class InquisitorManager extends AbstractManager
         }
     }
 }
-

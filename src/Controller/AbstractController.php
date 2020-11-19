@@ -61,4 +61,3 @@ abstract class AbstractController
         return $this->inquisitor;
     }
 }
-
