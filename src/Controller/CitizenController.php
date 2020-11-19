@@ -11,6 +11,7 @@ class CitizenController extends AbstractController
     {
         parent:: __construct();
     }
+
     public function index()
     {
         $witchManager = new WitchManager();

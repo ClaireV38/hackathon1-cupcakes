@@ -1,1 +1,46 @@
 {% extends 'layout.html.twig' %}
+
+{% block title %}
+    Sign up
+{% endblock title %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/signUp.css">
+{% endblock stylesheet %}
+
+{% block content %}
+    <form action="" method="post">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Name</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="name" value="{{ inquisitor.name }}">
+            {% if errors.name %}
+                <span>{{ errors.name }}</span>
+            {% endif %}
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Registration Number</label>
+            <input type="tel" class="form-control" id="exampleInputPassword1" name="registrationNumber" value="{{ inquisitor.registrationNumber }}">
+            {% if errors.registrationNumber %}
+                <span>{{ errors.registrationNumber }}</span>
+            {% endif %}
+            {% if errors.form %}
+                <span>{{ errors.form }}</span>
+            {% endif %}
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" name="password" value="{{ inquisitor.password }}">
+            {% if errors.password %}
+                <span>{{ errors.password }}</span>
+            {% endif %}
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Password repeat</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" name="passwordRepeat" value="{{ inquisitor.passwordRepeat }}">
+            {% if errors.passwordRepeat %}
+                <span>{{ errors.passwordRepeat }}</span>
+            {% endif %}
+        </div>
+        <button type="submit" class="btn btn-primary">Sign Up</button>
+    </form>
+{% endblock content %}

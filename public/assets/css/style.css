@@ -36,17 +36,18 @@
 }
 
 .logo {
-    width: 50px;
+    width: 40px;
     margin-left: 10px;
     margin-right: 10px;
 }
 
 .navTitle {
     font-family: Charcoal, sans-serif;
-    font-size: 1.7em;
+    font-size: 1em;
     color: var(--light);
     text-shadow: 1px 1px 2px var(--dark);
     margin-right: 13%;
+    margin-top: 4%;
 }
 
 /*
@@ -72,7 +73,7 @@
 
 .primaryTitle {
     font-family: Charcoal, sans-serif;
-    font-size: 2.3em;
+    font-size: 2em;
     color: var(--light);
     display: flex;
     flex-direction: column;
@@ -119,7 +120,10 @@
     transform: translateY(4px);
 }
 
-c
+.woodenFooter{
+    bottom:0;
+    width:100%;
+}
 
 .flameFooter {
     background-image: url("/assets/images/background/flame.gif");
@@ -131,9 +135,10 @@ c
 
 .footerTitle {
     font-family: Charcoal, sans-serif;
-    font-size: 1.4em;
+    font-size: 1em;
     color: var(--light);
     text-shadow: 1px 1px 2px var(--dark);
+    margin-top: 4%;
 }
 
 /*
@@ -149,17 +154,36 @@ c
     height: auto;
 }
 
+.card-inquisitor{
+    text-align: initial;
+}
+
 .card-img-inquisitor{
     display: flex;
     justify-content: center;
     padding-top: 10px;
 }
 
+.card-inquisitor-title{
+    text-align: center;
+}
 .h1-inquisitor-bounty{
     text-align: center;
 }
-
 .progress_form {
     display: flex;
     flex-direction: column;
+}
+.container-custom {
+    background-color: var(--secondary-transparent);
+    border-radius: 5px;
+    width: 90%;
+    padding-bottom: 1rem;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.container-inquisitor-bounty{
+    display: flex;
+    justify-content: center;
+    text-align: center;
 }

@@ -15,11 +15,14 @@
 <body>
 
 <nav class="woodenNavBar">
-    <a href="/"><img src="/assets/images/logo.png" class="logo" alt="witch-hunter logo"></a>
+    <a href="/"><img src="/assets/images/logo.png" class="logo" alt="witch-hunter logo" ></a>
     <h1 class="navTitle">IS YOUR NEIGHBOR A WITCH ?</h1>
+    {% if app.inquisitor %}
+        <a href="/Inquisitor/logout" class="btn btn-outline-danger my-2 my-sm-0">Logout</a>
+    {% endif %}
 </nav>
 {% block content %}{% endblock %}
-<footer class="woodenNavBar">
+<footer class="woodenNavBar woodenFooter">
     <img src="assets/images/background/cupcake.png" class="logo" alt="cupcake logo">
     <div class="flameFooter">
         <h3 class="footerTitle">© The CupcakesManager</h3>

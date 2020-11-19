@@ -11,6 +11,7 @@ class WitchManager extends AbstractManager
     {
          parent::__construct(self::TABLE);
     }
+
     public function selectQuestions(): array
     {
         return $this->pdo->query('SELECT * FROM question')->fetchAll();
