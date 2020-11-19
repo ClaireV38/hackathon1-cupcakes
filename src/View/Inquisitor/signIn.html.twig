@@ -21,7 +21,7 @@
                            value="{{ data.matricul }}">
                 </div>
                 {% if errors.matricul is defined %}
-                    {{ errors.matricul }}
+                <span>{{ errors.matricul }}</span>
                 {% endif %}
                 <div class="form-group">
                     <label for="Password">Password</label>
@@ -29,7 +29,7 @@
                            value="{{ data.password }}">
                 </div>
                 {% if errors.password is defined %}
-                    {{ errors.password }}
+                <span>  {{ errors.password }}</span>
                 {% endif %}
                 <button type="submit" class="btn-go btn btn-light" name="btn-signIn">Go !</button>
             </form>
