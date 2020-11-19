@@ -5,12 +5,20 @@
     <video id="video" width="720" height="540" autoplay muted></video>
     <button type="button" onclick="snapshot()">Take a snapshot</button>
     <canvas id="photo"></canvas>
+    <form action="/home/index" method="post" enctype="multipart/form-data">
+        <input type="hidden" value="none" id="photo-data" name="photo">
+        <button>Submit</button>
+    </form>
 
     <script>
         const video = document.getElementById("video");
         const canvas = document.getElementById('photo');
-
         function startVideo() {
+            navigator.getUserMedia = ( navigator.getUserMedia ||
+                navigator.webkitGetUserMedia ||
+                navigator.mozGetUserMedia ||
+                navigator.msGetUserMedia
+            );
             navigator.mediaDevices.getUserMedia({
                 video: true
             }).then(
@@ -19,14 +27,13 @@
             );
         }
         startVideo();
-        video.onloadedmetadata = function () {
+        function snapshot() {
             canvas.width = video.videoWidth;
             canvas.height = video.videoHeight;
-            document.getElementById('splash').hidden = true;
-            document.getElementById('app').hidden = false;
-        }
-        function snapshot() {
             canvas.getContext('2d').drawImage(video, 0, 0);
+            const snapshot = canvas.toDataURL("image/png");
+            const photoData = document.querySelector('#photo-data');
+            photoData.value = snapshot;
         }
     </script>
 {% endblock %}
