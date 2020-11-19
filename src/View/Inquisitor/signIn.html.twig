@@ -11,30 +11,28 @@
 {% block content %}
     <div class="page-content">
         <div class="container container-signIn">
-            <div class="intro-signin">
-                <h2> Signin to discover your next prey</h2>
-            </div>
+            <h2 class="sign-title"> Signin to discover your next prey</h2>
             <form method="POST" action="/Inquisitor/signIn">
                 <div class="form-group">
                     <label for="matricul">Matricul Number</label>
                     <input type="number" class="form-control" id="matricul" name="matricul_number"
                            value="{{ data.matricul }}">
+                    {% if errors.matricul is defined %}
+                        <span>{{ errors.matricul }}</span>
+                    {% endif %}
                 </div>
-                {% if errors.matricul is defined %}
-                <span>{{ errors.matricul }}</span>
-                {% endif %}
                 <div class="form-group">
                     <label for="Password">Password</label>
                     <input type="password" class="form-control" id="Password" name="password"
                            value="{{ data.password }}">
+                    {% if errors.password is defined %}
+                        <span>  {{ errors.password }}</span>
+                    {% endif %}
                 </div>
-                {% if errors.password is defined %}
-                <span>  {{ errors.password }}</span>
-                {% endif %}
-                <button type="submit" class="btn-go btn btn-light" name="btn-signIn">Go !</button>
+                <button type="submit" class="btn-go btn-custom btn btn-light" name="btn-signIn">Go !</button>
             </form>
             <div class="account-creation">
-                <p>Want to join us on our journey ? </p>
+                <p class="sign-ask">Want to join us on our journey ? </p>
                 <a href="/Inquisitor/signUp" class="btn-account-creation btn-custom btn btn-light">Create an account</a>
             </div>
         </div>
