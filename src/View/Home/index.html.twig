@@ -6,7 +6,11 @@
     <div class="homePage">
         <h2 class="primaryTitle">Welcome fellow witch-hunter!</h2>
         <div class="homeLinks">
-            <a href="Inquisitor/bounty" class="homeButton">I’m an inquisitor in mission</a>
+            {% if app.inquisitor %}
+                <a href="Inquisitor/bounty" class="homeButton">I’m an inquisitor in mission</a>
+            {% else %}
+                <a href="/Inquisitor/signIn" class="homeButton">I’m an inquisitor in mission</a>
+            {% endif %}
             <a href="Citizen/denounce" class="homeButton">I am a simple citizen</a>
         </div>
     </div>

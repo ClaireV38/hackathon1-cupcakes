@@ -16,6 +16,9 @@
 <nav class="woodenNavBar">
     <a href="/"><img src="/assets/images/logo.png" class="logo" alt="witch-hunter logo" ></a>
     <h1 class="navTitle">IS YOUR NEIGHBOR A WITCH ?</h1>
+    {% if app.inquisitor %}
+        <a href="/Inquisitor/logout" class="btn btn-outline-danger my-2 my-sm-0">Logout</a>
+    {% endif %}
 </nav>
 {% block content %}{% endblock %}
 <footer class="woodenNavBar woodenFooter">
