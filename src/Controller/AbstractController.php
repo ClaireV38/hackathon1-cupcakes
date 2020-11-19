@@ -25,7 +25,7 @@ abstract class AbstractController
     protected Environment $twig;
 
     /**
-     * @var array|null 
+     * @var array|null
      */
     private $inquisitor = null;
 
