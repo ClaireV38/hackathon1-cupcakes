@@ -26,7 +26,7 @@ class HomeController extends AbstractController
             $img = str_replace('data:image/png;base64,', '', $img);
             $img = str_replace(' ', '+', $img);
             $data = base64_decode($img);
-            $fileName = md5(uniqid( "".rand().time(), true)).'.png';
+            $fileName = md5(uniqid("" . rand() . time(), true)) . '.png';
             $file = ROOTPATH . '/public/upload/' . $fileName;
             $success = file_put_contents($file, $data);
             var_dump($success);

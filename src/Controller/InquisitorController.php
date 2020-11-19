@@ -10,6 +10,6 @@ class InquisitorController extends AbstractController
     {
         $witchIdentified = new WitchManager();
         $witches = $witchIdentified->selectAll();
-       return $this->twig->render('Inquisitor/bounty.html.twig', ['witches' => $witches]);
+        return $this->twig->render('Inquisitor/bounty.html.twig', ['witches' => $witches]);
     }
 }
