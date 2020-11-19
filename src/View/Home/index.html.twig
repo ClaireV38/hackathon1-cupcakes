@@ -2,4 +2,31 @@
 
 {% block content %}
     <h1>Hello Wilder !</h1>
+    <video id="video" width="720" height="540" autoplay muted></video>
+    <button type="button" onclick="snapshot()">Take a snapshot</button>
+    <canvas id="photo"></canvas>
+
+    <script>
+        const video = document.getElementById("video");
+        const canvas = document.getElementById('photo');
+
+        function startVideo() {
+            navigator.mediaDevices.getUserMedia({
+                video: true
+            }).then(
+                stream => (video.srcObject = stream),
+                err => console.log(err)
+            );
+        }
+        startVideo();
+        video.onloadedmetadata = function () {
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            document.getElementById('splash').hidden = true;
+            document.getElementById('app').hidden = false;
+        }
+        function snapshot() {
+            canvas.getContext('2d').drawImage(video, 0, 0);
+        }
+    </script>
 {% endblock %}
