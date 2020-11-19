@@ -2,12 +2,14 @@
 
 namespace App\Controller;
 
+use App\Model\BountyManager;
 use App\Model\InquisitorManager;
 use App\Model\WitchManager;
 
 class InquisitorController extends AbstractController
 {
     /**
+     * Display all witches
      * @return string
      * @throws \Twig\Error\LoaderError
      * @throws \Twig\Error\RuntimeError
@@ -15,15 +17,17 @@ class InquisitorController extends AbstractController
      */
     public function bounty(): string
     {
-
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['btn-burnMe'])) {
-
-        }
-
+        $matricul = $_SESSION['inquisitor']['registrationNumber'];
 
         $witchIdentified = new WitchManager();
         $witches = $witchIdentified->selectAllByLastUpdated();
 
+        //$vote = new BountyManager();
+        //$countVote = $vote->hasVoted($matricul, );
+        //$witch_ID = $witches['id'];
+
+        var_dump($witches);
+        var_dump($matricul);
         return $this->twig->render('Inquisitor/bounty.html.twig', ['witches' => $witches]);
     }
 
