@@ -118,13 +118,7 @@
     transform: translateY(4px);
 }
 
-/*
-*
-* ==========================================
-* Footer
-* ==========================================
-*
-*/
+c
 
 .flameFooter {
     background-image: url("/assets/images/background/flame.gif");
@@ -139,4 +133,27 @@
     font-size: 1.4em;
     color: var(--light);
     text-shadow: 1px 1px 2px var(--dark);
+}
+
+/*
+*
+* ==========================================
+* Inquisitor Bounty
+* ==========================================
+*
+*/
+
+.img-inquisitor-witch{
+    width: 75%;
+    height: auto;
+}
+
+.card-img-inquisitor{
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+}
+
+.h1-inquisitor-bounty{
+    text-align: center;
 }
