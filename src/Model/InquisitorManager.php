@@ -17,9 +17,9 @@ class InquisitorManager extends AbstractManager
     /**
      * select one inquisitor by matricul
      * @param int $matricul
-     * @return array<Foo>
+     * @return array
      */
-    public function selectInquisitorByMatricul(int $matricul)
+    public function selectInquisitorByMatricul(int $matricul): ?array
     {
         $query = "SELECT * FROM " . self::TABLE . " WHERE registrationNumber=:matricul";
         $statement = $this->pdo->prepare($query);

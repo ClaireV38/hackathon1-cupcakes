@@ -30,7 +30,7 @@ class InquisitorController extends AbstractController
      */
     public function signIn(): string
     {
-        if (isset($_SESSION['user'])) {
+        if (isset($_SESSION['inquisitor'])) {
             header("Location: /");
         }
 
@@ -55,7 +55,10 @@ class InquisitorController extends AbstractController
                     if (!password_verify($password, $inquisitor['password'])) {
                         $errors['password'] = "Bad credentials";
                     } else {
-                        header("Location: /");
+                        $_SESSION['inquisitor'] = [
+                            'registrationNumber' => $inquisitor['registrationNumber'],
+                        ];
+                        header("Location:/inquisitor/bounty");
                     }
                 }
             }
@@ -113,6 +116,9 @@ class InquisitorController extends AbstractController
                 try {
                     $inquisitorManager->addInquisitor($inquisitor);
                     $inquisitorManager->selectInquisitorByMatricul($inquisitor['registrationNumber']);
+                    $_SESSION['inquisitor'] = [
+                        'registrationNumber' => $inquisitor['registrationNumber'],
+                    ];
                     header('Location:/inquisitor/bounty');
                 } catch (\PDOException $e) {
                     $errors['form'] = 'Registration number already used by an inquisitor, please contact the Kingdom';
@@ -123,5 +129,11 @@ class InquisitorController extends AbstractController
             'errors' => $errors,
             'inquisitor' => $inquisitor
         ]);
+    }
+
+    public function logout()
+    {
+        session_destroy();
+        header("Location: /");
     }
 }
