@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Model\WitchManager;
+
 class CitizenController extends AbstractController
 {
     public function index()
@@ -11,8 +13,8 @@ class CitizenController extends AbstractController
         if (isset($_POST['upload-name']) && isset($_FILES['photo'])) {
             $allowedExtension = [".jpg", ".png"];
             $allowedMime = "#image/(jpeg|png)#";
-            $sizeLimit = 10**6;
-            $uploadDire = ROOTPATH.'/public/upload/';
+            $sizeLimit = 10 ** 6;
+            $uploadDire = ROOTPATH . '/public/upload/';
             $img = $_FILES['photo'];
             $uploadStatus = $img['error'];
             if ($uploadStatus) {
@@ -28,11 +30,11 @@ class CitizenController extends AbstractController
             if (!$fileMimeMatch || !in_array($fileExtension, $allowedExtension)) {
                 $uploadErrors = "Error $fileName: The file should be an image. Only jpg or png formats are allowed.";
             } elseif ($fileSize > $sizeLimit) {
-                $uploadErrors = "Error $fileName: The file size should less than 1Mo. File size = ".round($fileSize/$sizeLimit, 2)."Mo.";
+                $uploadErrors = "Error $fileName: The file size should less than 1Mo. File size = " . round($fileSize / $sizeLimit, 2) . "Mo.";
             }
             if (empty($uploadErrors)) {
-                $hashId = md5(uniqid( "".rand().time(), true));
-                $success = move_uploaded_file($tempName, $uploadDire.$hashId.$fileExtension);
+                $hashId = md5(uniqid("" . rand() . time(), true));
+                $success = move_uploaded_file($tempName, $uploadDire . $hashId . $fileExtension);
             }
         } elseif (isset($_POST['snap-form'])) {
             $img = $_POST['photo'] ?? "";
@@ -49,5 +51,16 @@ class CitizenController extends AbstractController
             //header('Location:/citizen/denounce');
         }
         return $this->twig->render('Citizen/index.html.twig');
+    }
+
+    public function denounce()
+    {
+        $witchManager = new WitchManager();
+        $questions = $witchManager->selectQuestions();
+        $answers = $witchManager->selectAnswers();
+        return $this->twig->render('Citizen/denounce.html.twig', [
+            'answers' => $answers,
+            'questions' => $questions
+        ]);
     }
 }

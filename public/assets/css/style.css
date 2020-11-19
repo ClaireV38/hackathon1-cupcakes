@@ -1,3 +1,4 @@
+
 /*
 *
 * ==========================================
@@ -171,7 +172,10 @@ body {
 .h1-inquisitor-bounty{
     text-align: center;
 }
-
+.progress_form {
+    display: flex;
+    flex-direction: column;
+}
 .container-custom {
     background-color: var(--secondary-transparent);
     border-radius: 5px;
