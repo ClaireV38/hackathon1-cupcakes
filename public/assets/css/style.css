@@ -24,6 +24,29 @@
 *
 */
 
+.woodenNavBar {
+    background-image: url("/assets/images/background/wood.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 200px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    width: 50px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.navTitle {
+    font-family: Charcoal, sans-serif;
+    font-size: 1.7em;
+    color: var(--light);
+    text-shadow: 1px 1px 2px var(--dark);
+    margin-right: 13%;
+}
 
 /*
 *
@@ -93,4 +116,27 @@
     background-color: var(--secondary-dark);
     box-shadow: 0 5px var(--dark);
     transform: translateY(4px);
+}
+
+/*
+*
+* ==========================================
+* Footer
+* ==========================================
+*
+*/
+
+.flameFooter {
+    background-image: url("/assets/images/background/flame.gif");
+    background-repeat: no-repeat;
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+}
+
+.footerTitle {
+    font-family: Charcoal, sans-serif;
+    font-size: 1.4em;
+    color: var(--light);
+    text-shadow: 1px 1px 2px var(--dark);
 }
