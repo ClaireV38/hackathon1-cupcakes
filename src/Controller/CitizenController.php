@@ -12,7 +12,7 @@ class CitizenController extends AbstractController
         parent:: __construct();
     }
 
-    public function index()
+    public function denounce()
     {
         $witchManager = new WitchManager();
         $questions = $witchManager->selectQuestions();

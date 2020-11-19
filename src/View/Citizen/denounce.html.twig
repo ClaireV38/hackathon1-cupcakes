@@ -3,23 +3,31 @@
 
     <div class="card text-center">
         <div class="card-header">
-            <h1>Witch Detector</h1>
+            <span class="fas fa-burn fa-3x"> </span>
+                <h1>Witch Detector</h1>
+            <span class="fas fa-burn fa-3x"></span>
         </div>
         <div class="card-body">
             <form action="" method="post">
+                <div class="container-question-answer">
                 {% for question in questions %}
-                <h3>{{ loop.index }} : {{ question.text }}</h3>
+                    <hr>
+                <h4>{{ loop.index }} : {{ question.text }}</h4>
+                    <hr>
                     <div class="form-group">
-                        <label for="exampleFormControlSelect2"></label>
-                        <select multiple class="form-control" id="exampleFormControlSelect2">
-                            {% for answer in answers %}
-                                {% if answer.question_id == question.id %}
-                            <option>{{ answer.text }}</option>
-                                {% endif %}
-                            {% endfor %}
-                        </select>
+                        {% for answer in answers %}
+                            {% if answer.question_id == question.id %}
+                                <div class="form-check" style="vertical-align: middle">
+                                    <input class="form-check-input" style="" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" >
+                                    <label class="form-check-label" for="exampleRadios1">
+                                      <span class="answer">  {{ answer.text }} </span>
+                                    </label>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
                     </div>
                 {% endfor %}
+                </div>
             </form>
             <div class="progress">
                 <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>

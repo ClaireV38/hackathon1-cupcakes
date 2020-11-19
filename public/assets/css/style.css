@@ -16,6 +16,26 @@
     --primary-transparent: #b7474788;
     --secondary-transparent: #533c2c88;
 }
+.card-header {
+    background-color: var(--primary-color);
+    border: solid var(--secondary-dark) 5px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.card-body {
+    background-color: var(--primary-transparent);
+}
+
+h4 {
+    border: var(--secondary-dark) solid 3px;
+    padding: 4px;
+    border-radius: 10px;
+}
+
+.answer {
+    font-size: medium;
+}
 
 /*
 *
@@ -187,3 +207,10 @@
     justify-content: center;
     text-align: center;
 }
+/**
+questionnaire
+ */
+
+/*.form-check {*/
+/*    align-content: center;*/
+/*}*/
