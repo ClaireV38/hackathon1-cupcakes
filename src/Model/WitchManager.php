@@ -4,13 +4,12 @@ namespace App\Model;
 
 class WitchManager extends AbstractManager
 {
-    /**
-     *
-     */
-    const TABLE = 'question';
+
+    const TABLE = 'witch';
 
     public function __construct()
     {
-        parent::__construct(self::TABLE);
+         parent::__construct(self::TABLE);
     }
 }
+

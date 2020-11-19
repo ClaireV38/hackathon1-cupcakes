@@ -6,3 +6,4 @@ class InquisitorManager extends AbstractManager
 {
 
 }
+

@@ -1,0 +1,24 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1 class="h1-inquisitor-bounty">Hello {{ inquisitor.name }} !</h1>
+    <h5>You will find below the last witches our citizen spotted for you.</h5>
+    {% for witch in witches %}
+    <div class="card mb-3" style="max-width: 540px;">
+        <div class="row no-gutters">
+            <div class="col-md-4 card-img-inquisitor">
+                <img src="{{ witch.image }}" class="card-img img-inquisitor-witch" alt="{{ witch.image }} ">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">{{ witch.name }}</h5>
+                    <p class="card-text">Last known location: {{ witch.localisation }}</p>
+                    <p class="card-text">Witch probability: {{ witch.credibility }}</p>
+                    <p class="card-text"><small class="text-muted">Last seen on the: {{ witch.create_at|date("d M Y") }}
+                            at {{ witch.create_at|date("H:i") }}</small></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+{% endblock %}
