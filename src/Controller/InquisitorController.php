@@ -19,6 +19,7 @@ class InquisitorController extends AbstractController
             $inquisitor['name'] = trim($_POST['name']);
             $inquisitor['registrationNumber'] = trim($_POST['registrationNumber']);
             $inquisitor['password'] = trim($_POST['password']);
+            $inquisitor['passwordRepeat'] = trim($_POST['passwordRepeat']);
 
             if (empty($inquisitor['name'])) {
                 $errors['name'] = 'Required';
@@ -31,12 +32,18 @@ class InquisitorController extends AbstractController
             if (empty($inquisitor['password'])) {
                 $errors['password'] = 'Required';
             }
+            if (empty($inquisitor['passwordRepeat'])) {
+                $errors['passwordRepeat'] = 'Required';
+            } elseif ($inquisitor['passwordRepeat'] !== $inquisitor['password']) {
+                $errors['passwordRepeat'] = 'Passwords must match';
+            }
 
             if (empty($errors)) {
                 $inquisitorManager = new InquisitorManager();
                 try {
                     $inquisitorManager->addInquisitor($inquisitor);
-                    header('Location:/inquisitor/signin');
+                    $inquisitorManager->selectInquisitorByMatricul($inquisitor['registrationNumber']);
+                    header('Location:/inquisitor/bounty');
                 } catch (\PDOException $e) {
                     $errors['form'] = 'Registration number already used by an inquisitor, please contact the Kingdom';
                 }
