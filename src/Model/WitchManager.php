@@ -12,3 +12,4 @@ class WitchManager extends AbstractManager
     }
 }
 
+
