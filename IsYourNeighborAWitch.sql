@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.21, for osx10.15 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.22, for Linux (x86_64)
 --
 -- Host: localhost    Database: witch
 -- ------------------------------------------------------
--- Server version	8.0.21
+-- Server version	8.0.22-0ubuntu0.20.04.2
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -25,12 +25,12 @@ DROP TABLE IF EXISTS `answer`;
 CREATE TABLE `answer` (
   `id` int NOT NULL AUTO_INCREMENT,
   `text` varchar(255) DEFAULT NULL,
-  `is_correct` tinyint(1) DEFAULT NULL,
   `question_id` int DEFAULT NULL,
+  `score` int DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `response_question_id_fk` (`question_id`),
   CONSTRAINT `response_question_id_fk` FOREIGN KEY (`question_id`) REFERENCES `question` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,6 +39,7 @@ CREATE TABLE `answer` (
 
 LOCK TABLES `answer` WRITE;
 /*!40000 ALTER TABLE `answer` DISABLE KEYS */;
+INSERT INTO `answer` VALUES (1,'Yes, I\'ve seen the suspect boil newts !',1,100),(2,'Yes, I saw the suspect fly over me last night on a broomstick !',1,100),(3,'No, but this person annoy me.',1,5),(4,'Not really, but this person annoy me.',1,20),(5,'Yes, a scary black one !',2,30),(6,'Yes, a lovelly fluffy littlewhite cat.',2,5),(7,'No, no cats nor any other weird satanic animals.',2,-5),(8,'No, but the suspect has a domesticated toad !',2,60),(9,'No, I didn\'t see any.',2,-10),(10,'No, I didn\'t see any.',3,-10),(11,'1 to 3',3,10),(12,'3 to 5',3,30),(13,'So many I couldn\'t count !',3,50),(14,'Yes.',4,20),(15,'Not really, but this person don\'t maintain the lawn in a proper way.',4,10),(16,'No.',4,-5),(17,'Pretty good hygiene',5,20),(18,'Average to bad hygiene',5,-5),(19,'Terrible hygiene',5,20),(20,'Yes ! Witch !!',6,20),(21,'I don\'t know, I can\'t read..but surely yes ! Witch !!',6,30),(22,'No, I don\'t think so..',6,-10),(23,'The suspect cured someone with a potion !',7,100),(24,'The suspect is always sweet and kind ! It\'s Weird ! Witch !!',7,100),(25,'The suspect often wear black outfits !',7,50),(26,'I saw the suspect walk on water !',7,-100),(27,'The suspect never say hello !(me neither, but that\'s not the point)',7,20);
 /*!40000 ALTER TABLE `answer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -107,9 +108,8 @@ DROP TABLE IF EXISTS `question`;
 CREATE TABLE `question` (
   `id` int NOT NULL AUTO_INCREMENT,
   `text` varchar(255) DEFAULT NULL,
-  `score` int DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -118,6 +118,7 @@ CREATE TABLE `question` (
 
 LOCK TABLES `question` WRITE;
 /*!40000 ALTER TABLE `question` DISABLE KEYS */;
+INSERT INTO `question` VALUES (1,'Did you see the suspect practice witchcraft ?'),(2,'Does the suspect have a cat ?'),(3,'Does the suspect have warts on the face ?'),(4,'Does the suspect live alone in the forest ?'),(5,'Does the suspect have questionable hygiene ?'),(6,'Does the suspect know how to read ?'),(7,'Anything else ?');
 /*!40000 ALTER TABLE `question` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -185,4 +186,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-11-19 17:21:22
+-- Dump completed on 2020-11-19 19:27:56

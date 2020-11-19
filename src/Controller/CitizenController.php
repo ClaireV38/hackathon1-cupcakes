@@ -7,23 +7,17 @@ use App\Model\WitchManager;
 class CitizenController extends AbstractController
 {
 
-    private $witchManager;
-
     public function __construct()
     {
         parent:: __construct();
-        $this->witchManager = new WitchManager();
     }
-
     public function index()
     {
-
-        $questions = $this->witchManager->selectAll();
-
-
-
-
+        $witchManager = new WitchManager();
+        $questions = $witchManager->selectQuestions();
+        $answers = $witchManager->selectAnswers();
         return $this->twig->render('Citizen/denounce.html.twig', [
+            'answers' => $answers,
             'questions' => $questions
         ]);
     }
