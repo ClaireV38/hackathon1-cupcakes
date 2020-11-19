@@ -6,16 +6,17 @@ class CitizenController extends AbstractController
 {
     public function index()
     {
-        $uploadErrors = [];
+        $uploadErrors = "";
+        $success = false;
         if (isset($_POST['upload-name']) && isset($_FILES['photo'])) {
             $allowedExtension = [".jpg", ".png"];
             $allowedMime = "#image/(jpeg|png)#";
             $sizeLimit = 10**6;
             $uploadDire = ROOTPATH.'/public/upload/';
             $img = $_FILES['photo'];
-            $uploadStatus = $img['error']; //1 == error
+            $uploadStatus = $img['error'];
             if ($uploadStatus) {
-                $uploadErrors["status"] = "Something went terribly wrong with the upload.";
+                $uploadErrors = "Something went terribly wrong with the upload.";
             }
             $fileName = $img['name'];
             $tempName = $img['tmp_name'];
@@ -25,15 +26,15 @@ class CitizenController extends AbstractController
             $fileSize = filesize($tempName);
             //analyse l'extension & le MIME
             if (!$fileMimeMatch || !in_array($fileExtension, $allowedExtension)) {
-                $uploadErrors[$fileName] = "Error $fileName: The file should be an image. Only jpg, png formats are allowed.";
+                $uploadErrors = "Error $fileName: The file should be an image. Only jpg or png formats are allowed.";
             } elseif ($fileSize > $sizeLimit) {
-                $uploadErrors[$fileName] = "Error $fileName: The file size should less than 1Mo. File size = ".round($fileSize/$sizeLimit, 2)."Mo.";
+                $uploadErrors = "Error $fileName: The file size should less than 1Mo. File size = ".round($fileSize/$sizeLimit, 2)."Mo.";
             }
-            if (!isset($uploadErrors[$fileName])) {
+            if (empty($uploadErrors)) {
                 $hashId = md5(uniqid( "".rand().time(), true));
-                move_uploaded_file($tempName, $uploadDire.$hashId.$fileExtension);
+                $success = move_uploaded_file($tempName, $uploadDire.$hashId.$fileExtension);
             }
-            var_dump($uploadErrors);
+
         } elseif (isset($_POST['snap-form'])) {
             $img = $_POST['photo'] ?? "";
             $img = str_replace('data:image/png;base64,', '', $img);
@@ -42,7 +43,11 @@ class CitizenController extends AbstractController
             $fileName = md5(uniqid("" . rand() . time(), true)) . '.png';
             $file = ROOTPATH . '/public/upload/' . $fileName;
             $success = file_put_contents($file, $data);
-            var_dump($success);
+        }
+        if ($success) {
+            //TODO
+            echo 'success';
+            //header('Location:/citizen/denounce');
         }
         return $this->twig->render('Citizen/index.html.twig');
     }

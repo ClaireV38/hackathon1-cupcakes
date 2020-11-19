@@ -126,13 +126,6 @@ body {
     transform: translateY(4px);
 }
 
-/*
-.woodenFooter{
-    position: absolute;
-    bottom:0;
-    width:100%;
-}*/
-
 .flameFooter {
     background-image: url("/assets/images/background/flame.gif");
     background-repeat: no-repeat;
@@ -170,4 +163,31 @@ body {
 
 .h1-inquisitor-bounty{
     text-align: center;
+}
+
+/*
+*
+* ==========================================
+* Inquisitor Bounty
+* ==========================================
+*
+*/
+
+.photo-select {
+    display: flex;
+}
+
+.photo-select button {
+    flex-grow: 1;
+}
+
+.hide {
+    display: none;
+    width: 90%;
+    height: auto;
+}
+
+.resize {
+    width: 90%;
+    height: auto;
 }
