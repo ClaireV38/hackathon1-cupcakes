@@ -1,10 +1,8 @@
 <?php
 
-
 namespace App\Controller;
 
-
-use App\Model\UserManager;
+use App\Model\InquisitorManager;
 
 class InquisitorController extends AbstractController
 {
@@ -19,29 +17,31 @@ class InquisitorController extends AbstractController
      */
     public function signIn(): string
     {
-        if (isset($_SESSION['user']))
+        if (isset($_SESSION['user'])) {
             header("Location: /");
+        }
 
         $matricul = $password = "";
         $errors = [];
-        if ($_SERVER['REQUEST_METHOD'] === "POST" && !empty($_POST))
-        {
-            $matricul = trim($_POST['matricul_number']);
+        if ($_SERVER['REQUEST_METHOD'] === "POST" && !empty($_POST)) {
+            $matricul = intval(trim($_POST['matricul_number']));
             $password = trim($_POST['password']);
-            if (empty($matricul))
+            if (empty($matricul)) {
                 $errors['matricul'] = "Required";
-            if (empty($password))
+            }
+            if (empty($password)) {
                 $errors['password'] = "Required";
+            }
             if (empty($errors)) {
                 // log user in DB
                 $inquisitorManager = new InquisitorManager();
-                $inquisitor = $InquisitorManager->selectInquisitorByMatricul($matricul);
-                if (!$inquisitor)
+                $inquisitor = $inquisitorManager->selectInquisitorByMatricul($matricul);
+                if (!$inquisitor) {
                     $errors['matricul'] = "Inquisitor not found";
-                else {
-                    if (!password_verify($password, $inquisitor['password']))
+                } else {
+                    if (!password_verify($password, $inquisitor['password'])) {
                         $errors['password'] = "Bad credentials";
-                    else {
+                    } else {
                         $_SESSION['inquisitor'] = [
                             'matricul' => $inquisitor['matricul'],
                         ];

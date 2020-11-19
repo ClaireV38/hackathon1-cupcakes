@@ -11,7 +11,6 @@ class ImgBgLessGenerator
     public function __construct()
     {
         $this->rmvBg = $removebg = new RemoveBg("iAE82W2HYXicFdPzcALt2RCS");
-
     }
 
     public function createBgLessImg($pathToFile)
