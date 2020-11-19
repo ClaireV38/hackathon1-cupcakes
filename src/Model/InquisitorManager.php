@@ -17,7 +17,7 @@ class InquisitorManager extends AbstractManager
     /**
      * select one inquisitor by matricul
      * @param int $matricul
-     * @return array or bool
+     * @return array<Foo>
      */
     public function selectInquisitorByMatricul(int $matricul)
     {
@@ -28,7 +28,11 @@ class InquisitorManager extends AbstractManager
         return $statement->fetch();
     }
 
-    public function addInquisitor($inquisitor)
+    /**
+     * @param array $inquisitor
+     *
+     */
+    public function addInquisitor(array $inquisitor)
     {
         $query = 'INSERT INTO ' . self::TABLE . ' (name, registrationNumber, password)
         VALUES (:name, :registrationNumber, :password)';
@@ -37,7 +41,7 @@ class InquisitorManager extends AbstractManager
         $statement->bindValue('registrationNumber', $inquisitor['registrationNumber'], \PDO::PARAM_INT);
         $statement->bindValue('password', password_hash($inquisitor['password'], PASSWORD_DEFAULT), \PDO::PARAM_STR);
         if ($statement->execute()) {
-            return $this->pdo->lastInsertId();
+            return (int)$this->pdo->lastInsertId();
         }
     }
 }

@@ -7,7 +7,13 @@ use App\Model\WitchManager;
 
 class InquisitorController extends AbstractController
 {
-    public function bounty()
+    /**
+     * @return string
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
+    public function bounty(): string
     {
         $witchIdentified = new WitchManager();
         $witches = $witchIdentified->selectAll();
@@ -49,9 +55,6 @@ class InquisitorController extends AbstractController
                     if (!password_verify($password, $inquisitor['password'])) {
                         $errors['password'] = "Bad credentials";
                     } else {
-                        $_SESSION['inquisitor'] = [
-                            'matricul' => $inquisitor['matricul'],
-                        ];
                         header("Location: /");
                     }
                 }
@@ -67,7 +70,13 @@ class InquisitorController extends AbstractController
     }
 
 
-    public function signUp()
+    /**
+     * @return string
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
+    public function signUp(): string
     {
         if (!empty($_SESSION)) {
             header('Location: /');
@@ -78,7 +87,7 @@ class InquisitorController extends AbstractController
 
         if ($_SERVER['REQUEST_METHOD'] === "POST" && !empty($_POST)) {
             $inquisitor['name'] = trim($_POST['name']);
-            $inquisitor['registrationNumber'] = trim($_POST['registrationNumber']);
+            $inquisitor['registrationNumber'] = intval(trim($_POST['registrationNumber']));
             $inquisitor['password'] = trim($_POST['password']);
             $inquisitor['passwordRepeat'] = trim($_POST['passwordRepeat']);
 
@@ -87,7 +96,7 @@ class InquisitorController extends AbstractController
             }
             if (empty($inquisitor['registrationNumber'])) {
                 $errors['registrationNumber'] = 'Required';
-            } elseif (strlen($inquisitor['registrationNumber']) !== 8) {
+            } elseif (strlen(strval($inquisitor['registrationNumber'])) !== 8) {
                 $errors['registrationNumber'] = 'Registration number must contains 8 figures';
             }
             if (empty($inquisitor['password'])) {
