@@ -119,6 +119,12 @@
     transform: translateY(4px);
 }
 
+.woodenFooter{
+    position: absolute;
+    bottom:0;
+    width:100%;
+}
+
 .flameFooter {
     background-image: url("/assets/images/background/flame.gif");
     background-repeat: no-repeat;
