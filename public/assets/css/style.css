@@ -1,4 +1,6 @@
 @import "signUp-signIn.css";/*
+
+/*
 *
 * ==========================================
 * Variables
@@ -14,6 +16,13 @@
     --light: #ee9a98;
     --primary-transparent: #b7474788;
     --secondary-transparent: #533c2c88;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
 }
 
 /*
@@ -58,7 +67,6 @@
 */
 
 .homePage {
-    height: 100vh;
     background: url("/assets/images/background/background1.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -68,6 +76,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    flex-grow: 1;
 }
 
 .primaryTitle {
@@ -119,11 +128,6 @@
     transform: translateY(4px);
 }
 
-.woodenFooter{
-    bottom:0;
-    width:100%;
-}
-
 .flameFooter {
     background-image: url("/assets/images/background/flame.gif");
     background-repeat: no-repeat;
@@ -169,7 +173,10 @@
 .h1-inquisitor-bounty{
     text-align: center;
 }
-
+.progress_form {
+    display: flex;
+    flex-direction: column;
+}
 .container-custom {
     background-color: var(--secondary-transparent);
     border-radius: 5px;
@@ -178,8 +185,36 @@
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.container-inquisitor-bounty{
+.container-inquisitor-bounty {
     display: flex;
     justify-content: center;
     text-align: center;
+}
+
+
+/*
+*
+* ==========================================
+* citizen index
+* ==========================================
+*
+*/
+
+.photo-select {
+    display: flex;
+}
+
+.photo-select button {
+    flex-grow: 1;
+}
+
+.hide {
+    display: none;
+    width: 90%;
+    height: auto;
+}
+
+.resize {
+    width: 90%;
+    height: auto;
 }
