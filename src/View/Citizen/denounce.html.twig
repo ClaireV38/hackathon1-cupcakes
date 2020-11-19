@@ -1,1 +1,38 @@
 {% extends 'layout.html.twig' %}
+{% block content %}
+
+    <div class="card text-center">
+        <div class="card-header">
+            <h1>Witch Detector</h1>
+        </div>
+        <div class="card-body">
+            <form action="" method="post">
+                {% for question in questions %}
+                <h3>{{ question.text }}</h3>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="animal" id="yes" value="yes" >
+                    <label class="form-check-label" for="exampleRadios1">
+                        Yes
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="animal" id="no" value="no">
+                    <label class="form-check-label" for="exampleRadios2">
+                        No
+                    </label>
+                </div>
+                {% endfor %}
+            </form>
+        </div>
+        <div class="card-footer text-muted">
+        </div>
+    </div>
+
+
+
+
+    <div class="progress">
+        <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+
+{% endblock %}
