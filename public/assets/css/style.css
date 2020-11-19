@@ -155,20 +155,42 @@ body {
     height: auto;
 }
 
+.card-inquisitor{
+    text-align: initial;
+}
+
 .card-img-inquisitor{
     display: flex;
     justify-content: center;
     padding-top: 10px;
 }
 
+.card-inquisitor-title{
+    text-align: center;
+}
 .h1-inquisitor-bounty{
     text-align: center;
 }
 
+.container-custom {
+    background-color: var(--secondary-transparent);
+    border-radius: 5px;
+    width: 90%;
+    padding-bottom: 1rem;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.container-inquisitor-bounty {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+
 /*
 *
 * ==========================================
-* Inquisitor Bounty
+* citizen index
 * ==========================================
 *
 */

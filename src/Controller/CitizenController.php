@@ -34,7 +34,6 @@ class CitizenController extends AbstractController
                 $hashId = md5(uniqid( "".rand().time(), true));
                 $success = move_uploaded_file($tempName, $uploadDire.$hashId.$fileExtension);
             }
-
         } elseif (isset($_POST['snap-form'])) {
             $img = $_POST['photo'] ?? "";
             $img = str_replace('data:image/png;base64,', '', $img);
