@@ -10,4 +10,9 @@ class WitchManager extends AbstractManager
     {
          parent::__construct(self::TABLE);
     }
+
+    public function selectAllByLastUpdated() {
+        $statement = $this->pdo->query("SELECT * FROM " . self::TABLE . " ORDER BY credibility ASC");
+        return $statement->fetchAll();
+    }
 }

@@ -15,8 +15,15 @@ class InquisitorController extends AbstractController
      */
     public function bounty(): string
     {
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['btn-burnMe'])) {
+
+        }
+
+
         $witchIdentified = new WitchManager();
-        $witches = $witchIdentified->selectAll();
+        $witches = $witchIdentified->selectAllByLastUpdated();
+
         return $this->twig->render('Inquisitor/bounty.html.twig', ['witches' => $witches]);
     }
 
