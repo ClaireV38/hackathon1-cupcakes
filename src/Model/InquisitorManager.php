@@ -4,6 +4,7 @@ namespace App\Model;
 
 class InquisitorManager extends AbstractManager
 {
+
     public const TABLE = 'inquisitor';
 
     /**
@@ -29,3 +30,4 @@ class InquisitorManager extends AbstractManager
         return $statement->fetch();
     }
 }
+
