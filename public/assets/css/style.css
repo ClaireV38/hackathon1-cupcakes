@@ -1,0 +1,165 @@
+/*
+*
+* ==========================================
+* Variables
+* ==========================================
+*
+*/
+
+:root{
+    --primary-color: #b74747;
+    --secondary-color: #533c2c;
+    --dark: #77261f;
+    --secondary-dark: #3b2c1f;
+    --light: #ee9a98;
+    --primary-transparent: #b7474788;
+    --secondary-transparent: #533c2c88;
+}
+
+/*
+*
+* ==========================================
+* NavBar
+* ==========================================
+*
+*/
+
+.woodenNavBar {
+    background-image: url("/assets/images/background/wood.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 200px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    width: 40px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.navTitle {
+    font-family: Charcoal, sans-serif;
+    font-size: 1em;
+    color: var(--light);
+    text-shadow: 1px 1px 2px var(--dark);
+    margin-right: 13%;
+    margin-top: 4%;
+}
+
+/*
+*
+* ==========================================
+* Home Page
+* ==========================================
+*
+*/
+
+.homePage {
+    height: 100vh;
+    background: url("/assets/images/background/background1.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.primaryTitle {
+    font-family: Charcoal, sans-serif;
+    font-size: 2em;
+    color: var(--light);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 200px;
+    background-image: url("/assets/images/background/plate.png");
+    background-repeat: no-repeat;
+    background-size: 100% 200px;
+    text-align: center;
+    padding-left: 75px;
+    padding-right: 75px;
+    text-shadow: 1px 1px 2px var(--dark);
+}
+
+.homeLinks {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.homeButton {
+    padding: 15px 25px;
+    font-size: 26px;
+    text-align: center;
+    text-decoration: none;
+    color: var(--light);
+    background-color: var(--secondary-color);
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 9px var(--dark);
+    margin: 15px;
+}
+
+.homeButton:hover {
+    background-color: var(--secondary-dark);
+    text-decoration: none;
+    color : var(--light);
+}
+
+.homeButton:active {
+    background-color: var(--secondary-dark);
+    box-shadow: 0 5px var(--dark);
+    transform: translateY(4px);
+}
+
+.woodenFooter{
+    position: absolute;
+    bottom:0;
+    width:100%;
+}
+
+.flameFooter {
+    background-image: url("/assets/images/background/flame.gif");
+    background-repeat: no-repeat;
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+}
+
+.footerTitle {
+    font-family: Charcoal, sans-serif;
+    font-size: 1em;
+    color: var(--light);
+    text-shadow: 1px 1px 2px var(--dark);
+    margin-top: 4%;
+}
+
+/*
+*
+* ==========================================
+* Inquisitor Bounty
+* ==========================================
+*
+*/
+
+.img-inquisitor-witch{
+    width: 75%;
+    height: auto;
+}
+
+.card-img-inquisitor{
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+}
+
+.h1-inquisitor-bounty{
+    text-align: center;
+}
