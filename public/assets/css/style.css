@@ -16,6 +16,13 @@
     --secondary-transparent: #533c2c88;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+}
+
 /*
 *
 * ==========================================
@@ -58,7 +65,6 @@
 */
 
 .homePage {
-    height: 100vh;
     background: url("/assets/images/background/background1.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -68,6 +74,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    flex-grow: 1;
 }
 
 .primaryTitle {
@@ -119,11 +126,12 @@
     transform: translateY(4px);
 }
 
+/*
 .woodenFooter{
     position: absolute;
     bottom:0;
     width:100%;
-}
+}*/
 
 .flameFooter {
     background-image: url("/assets/images/background/flame.gif");
