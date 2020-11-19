@@ -17,33 +17,33 @@ class InquisitorController extends AbstractController
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\SyntaxError
      */
-    public function signIn()
+    public function signIn(): string
     {
         if (isset($_SESSION['user']))
             header("Location: /");
 
-        $email = $password = "";
+        $matricul = $password = "";
         $errors = [];
         if ($_SERVER['REQUEST_METHOD'] === "POST" && !empty($_POST))
         {
-            $email = trim($_POST['email']);
+            $matricul = trim($_POST['matricul_number']);
             $password = trim($_POST['password']);
-            if (empty($email))
-                $errors['email'] = "Required";
+            if (empty($matricul))
+                $errors['matricul'] = "Required";
             if (empty($password))
                 $errors['password'] = "Required";
             if (empty($errors)) {
                 // log user in DB
-                $userManager = new UserManager();
-                $user = $userManager->selectUserByEmail($email);
-                if (!$user)
-                    $errors['email'] = "User not found";
+                $inquisitorManager = new InquisitorManager();
+                $inquisitor = $InquisitorManager->selectInquisitorByMatricul($matricul);
+                if (!$inquisitor)
+                    $errors['matricul'] = "Inquisitor not found";
                 else {
-                    if (!password_verify($password, $user['password']))
+                    if (!password_verify($password, $inquisitor['password']))
                         $errors['password'] = "Bad credentials";
                     else {
-                        $_SESSION['user'] = [
-                            'email' => $user['email'],
+                        $_SESSION['inquisitor'] = [
+                            'matricul' => $inquisitor['matricul'],
                         ];
                         header("Location: /");
                     }
@@ -54,7 +54,8 @@ class InquisitorController extends AbstractController
         return $this->twig->render("Inquisitor/signIn.html.twig", [
             'errors' => $errors,
             'data' => [
-                'email' => $email,
+                'matricul' => $matricul,
+                'password' => $password
             ]
         ]);
     }
