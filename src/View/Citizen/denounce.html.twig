@@ -8,30 +8,26 @@
             <span class="fas fa-burn fa-3x"></span>
         </div>
         <div class="card-body">
-            <form action="" method="post">
+            <div class="progress">
+                <div class="progress-bar bg-success" role="progressbar" style="width: 50%" aria-valuemin="0" aria-valuemax="100" id="progressBar"></div>
+            </div>
                 <div class="container-question-answer">
-                {% for question in questions %}
                     <hr>
-                <h4>{{ loop.index }} : {{ question.text }}</h4>
+                <h4>{{ questions.id }} : {{ questions.text }}</h4>
                     <hr>
                     <div class="form-group">
                         {% for answer in answers %}
-                            {% if answer.question_id == question.id %}
-                                <div class="form-check" style="vertical-align: middle">
-                                    <input class="form-check-input" style="" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" >
-                                    <label class="form-check-label" for="exampleRadios1">
-                                      <span class="answer">  {{ answer.text }} </span>
-                                    </label>
+                            <form action="/citizen/denounce" method="post">
+                                <div class="answerChoice">
+                                    <input type="hidden" value="{{ answer.id }}" name="answer_id">
+                                    <input type="submit" value="{{ answer.text }}">
+                                    <input type="hidden" value="{{ answer.question_id }}" name="question_id">
+                                    <input type="hidden" value="{{ answer.score }}" name="answer_score">
                                 </div>
-                            {% endif %}
+                            </form>
                         {% endfor %}
                     </div>
-                {% endfor %}
                 </div>
-            </form>
-            <div class="progress">
-                <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
         </div>
     </div>
 {% endblock %}
