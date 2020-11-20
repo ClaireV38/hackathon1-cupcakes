@@ -11,6 +11,12 @@ namespace App\Controller;
 
 class HomeController extends AbstractController
 {
+    public function __construct()
+    {
+        parent::__construct();
+        $this->removeUnusedImg();
+    }
+
     /**
      * Display home page
      *

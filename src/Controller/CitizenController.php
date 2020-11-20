@@ -10,6 +10,7 @@ class CitizenController extends AbstractController
 {
     public function index()
     {
+        $this->removeUnusedImg();
         $uploadErrors = "";
         $success = false;
         if (isset($_POST['upload-name']) && isset($_FILES['photo'])) {

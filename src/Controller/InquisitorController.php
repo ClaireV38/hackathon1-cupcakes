@@ -7,6 +7,12 @@ use App\Model\WitchManager;
 
 class InquisitorController extends AbstractController
 {
+    public function __construct()
+    {
+        parent::__construct();
+        $this->removeUnusedImg();
+    }
+
     /**
      * @return string
      * @throws \Twig\Error\LoaderError

@@ -17,8 +17,6 @@ use Twig\Loader\FilesystemLoader;
 
 abstract class AbstractController
 {
-
-
     /**
      * @var Environment
      */
@@ -59,5 +57,14 @@ abstract class AbstractController
     protected function getInquisitor(): array
     {
         return $this->inquisitor;
+    }
+
+    protected function removeUnusedImg()
+    {
+        if (isset($_SESSION['form-photo'])) {
+            $pathImg = ROOTPATH . '/public/upload/' . $_SESSION['form-photo'];
+            unlink($pathImg);
+            unset($_SESSION['form-photo']);
+        }
     }
 }
