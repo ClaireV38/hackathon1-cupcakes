@@ -21,26 +21,24 @@ class InquisitorController extends AbstractController
 
         $witchManager = new WitchManager();
 
-        $id = $votes = $flameCount = "";
+        $id = $votes = $flameCount = $hasVoted = $errors = "";
         if ($_SERVER['REQUEST_METHOD'] === "POST" && isset($_POST['btn-burnMe'])) {
             $id = intval($_POST['witchId']);
 
-            $voteManager = new BountyManager();
-            $votes = $voteManager->hasVoted($matricul, $id);
+            $bountyManager = new BountyManager();
 
-            $flameCounts = $witchManager->selectFlameCount($id);
-            $flameCount = intval($flameCounts['flame_count']);
-
-            $witchManager->updateCredibilityWhenFlamecountIsFull();
-
-            $witches['id']['flame_count'] = $flameCount;
-
-            header("Location: /Inquisitor/bounty/");
+            try {
+                $votes = $bountyManager->addVote($matricul, $id);
+                $witchManager->updateCredibilityWhenFlamecountIsFull();
+                header("Location: /Inquisitor/bounty/");
+            } catch (\PDOException $e) {
+                    $errors = "You aready voted to burn this witch ! ";
+            }
         }
 
         $witches = $witchManager->selectAllByLastUpdated();
 
-        return $this->twig->render('Inquisitor/bounty.html.twig', ['witches' => $witches, "votes" => $votes, 'flameCount' => $flameCount]);
+        return $this->twig->render('Inquisitor/bounty.html.twig', ['witches' => $witches, "votes" => $votes, "errors" => $errors]);
     }
 
     /**
