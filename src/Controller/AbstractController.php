@@ -67,4 +67,11 @@ abstract class AbstractController
             unset($_SESSION['form-photo']);
         }
     }
+
+    protected function cleanInput($str) {
+        $str = htmlspecialchars($str);
+        $str = trim($str);
+        $str = stripcslashes($str);
+        return $str;
+    }
 }

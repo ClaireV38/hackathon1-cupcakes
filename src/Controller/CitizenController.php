@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Model\QuestionManager;
+use App\Model\WitchManager;
 use App\ImgBgLessGenerator\ImgBgLessGenerator;
 use BigV\ImageCompare;
 
@@ -58,8 +59,10 @@ class CitizenController extends AbstractController
 
     public function denounce()
     {
-        if (!isset($_SESSION['form-photo']))
+        if (!isset($_SESSION['form-photo'])||empty($_SESSION['form-photo'])) {
             header('Location:/citizen/index');
+            die();
+        }
         $uploadedImg = ROOTPATH . '/public/upload/'.$_SESSION['form-photo'];
         /*if (file_exists($uploadedImg)) {
             (new ImgBgLessGenerator())->createBgLessImg($uploadedImg);
@@ -83,6 +86,36 @@ class CitizenController extends AbstractController
             }
         }
         closedir($witchDir);
+
+        $errors = [];
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $witchName = $_POST['name'] ?? '';
+            $address = $_POST['name'] ?? '';
+            $score = $_POST['score'] ?? '';
+            $image = '/upload/'.$_SESSION['form-photo'];
+            $witchName= $this->cleanInput($witchName);
+            if (!$witchName) {
+                $errors['name'] = 'Name is required';
+            }
+            $address = $this->cleanInput($address);
+            if (!$address) {
+                $errors['address'] = 'Address is required';
+            }
+            if (!filter_var($score, FILTER_VALIDATE_INT) || $score<0 || $score >100)
+            {
+                $errors['score'] = 'Score:'.$score;
+            }
+            if (empty($errors)) {
+                $witchManager = new WitchManager();
+                $success = $witchManager->insert($witchName, $address, $score, $image);
+                if ($success) {
+                    unset($_SESSION['form-photo']);
+                    header('Location:/');
+                    die();
+                }
+            }
+        }
+
         $questionManager = new QuestionManager();
         $questions = $questionManager->selectQuestions();
         $answers = $questionManager->selectAnswers();
