@@ -192,3 +192,26 @@ nav{
     width: 100%;
     height: auto;
 }
+
+
+/*
+*
+* ==========================================
+* citizen denounce
+* ==========================================
+*
+*/
+
+.witch-display {
+    display: flex;
+    align-items: baseline;
+}
+
+.witch-display div {
+    flex-basis: 50%;
+}
+
+.witch-display img {
+    min-width: 0;
+    max-width: 100%;
+}

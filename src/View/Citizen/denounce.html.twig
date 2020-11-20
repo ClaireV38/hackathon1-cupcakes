@@ -10,6 +10,16 @@
         <div class="card-header">
             <h1>Witch Detector</h1>
         </div>
+        <div class="witch-display">
+            <div>
+                <img src="/upload/{{ uploadedImg }}" >
+                <p>The witch</p>
+            </div>
+            <div>
+                <img src="/assets/images/confirmed-witch/{{ witchImg }}" >
+                <p>Known witch resemblance: {{ similarityRation }} %</p>
+            </div>
+        </div>
         <div class="card-body">
             <form action="" method="post">
                 {% for question in questions %}
