@@ -79,7 +79,7 @@ class CitizenController extends AbstractController
             if ($nextElement === '.' || $nextElement === '..')
                 continue;
             $witchImg = $witchDirPath.$nextElement;
-            $similarity = 100 - $imgCmp->compare($uploadedImg, $witchImg);
+            $similarity = 80 - $imgCmp->compare($uploadedImg, $witchImg);
             if ($similarity >= $maxSimilarity) {
                 $maxSimilarity = $similarity;
                 $similarImg = $nextElement;
@@ -113,6 +113,8 @@ class CitizenController extends AbstractController
                     header('Location:/');
                     die();
                 }
+            } else {
+                var_dump($errors);
             }
         }
 

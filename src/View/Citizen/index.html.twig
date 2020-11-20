@@ -1,31 +1,35 @@
 {% extends 'layout.html.twig' %}
 
-{% block title %}Welcome{% endblock %}
+{% block title %}Scan{% endblock %}
 
 {% block content %}
-    <h1>Do you have a picture of your neighbour</h1>
-    <div style="display: flex; flex-direction: column">
-        <div class="photo-select">
-            <button id="upload-button">Upload a picture</button>
-            <button id="take-pic-button">Take a picture</button>
+    <div class="card-header">
+        <h1>Do you have a picture of your neighbour?</h1>
+    </div>
+    <div style="display: flex; flex-direction: column" class="pictureUploader">
+        <div class="photo-select pictureUploader">
+            <button class="homeButton" id="upload-button">Upload a picture</button>
+            <button class="homeButton" id="take-pic-button">Take a picture</button>
         </div>
         <div style="width: 90%; height: 300px; margin: 0 auto">
             <div id="upload-menu" class="hide">
-                <form action="/citizen/index" method="post" enctype="multipart/form-data">
+                <form action="/citizen/index" method="post" enctype="multipart/form-data" class="snapFlex">
                     <input type="hidden">
                     <input type="file" name="photo">
-                    <button name="upload-name">Submit</button>
+                    <button class="homeButton" name="upload-name">Submit</button>
                 </form>
             </div>
             <div id="snapshot-menu" class="hide">
-                <video id="video" width="720" height="540" class="snap-resize" autoplay muted></video>
-                <canvas id="photo" class="snap-resize hide"></canvas>
-                <button type="button" id="snapshot-button">Take a snapshot</button>
-                <button type="button" id="retake-button">Retake a snapshot</button>
-                <form action="/citizen/index" method="post" enctype="multipart/form-data">
-                    <input type="hidden" value="none" id="photo-data" name="photo">
-                    <button name="snap-form">Submit</button>
-                </form>
+                <div class="snapFlex">
+                    <video id="video" width="720" height="540" class="snap-resize" autoplay muted></video>
+                    <canvas id="photo" class="snap-resize hide"></canvas>
+                    <button class="lilHomeButton" type="button" id="snapshot-button">Take a snapshot</button>
+                    <button class="lilHomeButton" type="button" id="retake-button">Retake a snapshot</button>
+                    <form action="/citizen/index" method="post" enctype="multipart/form-data">
+                        <input type="hidden" value="none" id="photo-data" name="photo">
+                        <button class="homeButton" name="snap-form">Submit</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
