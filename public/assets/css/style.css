@@ -302,7 +302,6 @@ Employee of the Month
 
 .suspectPicture img {
     border-radius: 20%;
-    max-height: 200px;
     border: solid 3px var(--secondary-color);
 }
 
@@ -383,4 +382,15 @@ Employee of the Month
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.formLabel {
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.3em;
+}
+
+.formInput {
+    margin-bottom: 20px;
 }
