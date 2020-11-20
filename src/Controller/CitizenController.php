@@ -33,22 +33,22 @@ class CitizenController extends AbstractController
                 $uploadErrors = "Error $fileName: The file size should less than 1Mo. File size = " . round($fileSize / $sizeLimit, 2) . "Mo.";
             }
             if (empty($uploadErrors)) {
-                $hashId = md5(uniqid("" . rand() . time(), true));
-                $success = move_uploaded_file($tempName, $uploadDire . $hashId . $fileExtension);
+                $newFileName = md5(uniqid("" . rand() . time(), true)) . $fileExtension;
+                $success = move_uploaded_file($tempName, $uploadDire . $newFileName);
+
             }
         } elseif (isset($_POST['snap-form'])) {
             $img = $_POST['photo'] ?? "";
             $img = str_replace('data:image/png;base64,', '', $img);
             $img = str_replace(' ', '+', $img);
             $data = base64_decode($img);
-            $fileName = md5(uniqid("" . rand() . time(), true)) . '.png';
-            $file = ROOTPATH . '/public/upload/' . $fileName;
+            $newFileName = md5(uniqid("" . rand() . time(), true)) . '.png';
+            $file = ROOTPATH . '/public/upload/' . $newFileName;
             $success = file_put_contents($file, $data);
         }
         if ($success) {
-            //TODO
-            echo 'success';
-            //header('Location:/citizen/denounce');
+            $_SESSION['form-photo'] = $newFileName;
+            header('Location:/citizen/denounce');
         }
         return $this->twig->render('Citizen/index.html.twig');
     }
