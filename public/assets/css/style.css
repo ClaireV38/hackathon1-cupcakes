@@ -47,8 +47,8 @@ nav{
     opacity: 0.80;
     height: 55px;
     margin: 0;
-    /*align-content: center;
-    justify-content: space-between;*/
+    align-content: center;
+    justify-content: space-between;
 }
 
 .logo {
