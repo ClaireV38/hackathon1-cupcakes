@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Model\WitchManager;
+use App\ImgBgLessGenerator\ImgBgLessGenerator;
+use BigV\ImageCompare;
 
 class CitizenController extends AbstractController
 {
@@ -55,12 +57,41 @@ class CitizenController extends AbstractController
 
     public function denounce()
     {
+        if (!isset($_SESSION['form-photo']))
+            header('Location:/citizen/index');
+        $uploadedImg = ROOTPATH . '/public/upload/'.$_SESSION['form-photo'];
+        /*if (file_exists($uploadedImg)) {
+            (new ImgBgLessGenerator())->createBgLessImg($uploadedImg);
+        } else {
+            unset($_SESSION['form-photo']);
+            header('Location:/citizen/index');
+        }*/
+        $imgCmp = new ImageCompare();
+        $maxSimilarity = 0;
+        $similarImg = "";
+        $witchDirPath = __DIR__ . '/../bg-less-witch/';
+        $witchDir = opendir($witchDirPath);
+        while (($nextElement = readdir($witchDir))){
+            if ($nextElement === '.' || $nextElement === '..')
+                continue;
+            $witchImg = $witchDirPath.$nextElement;
+            $similarity = 100 - $imgCmp->compare($uploadedImg, $witchImg);
+            if ($similarity >= $maxSimilarity) {
+                $maxSimilarity = $similarity;
+                $similarImg = $nextElement;
+            }
+        }
+        closedir($witchDir);
+
         $witchManager = new WitchManager();
         $questions = $witchManager->selectQuestions();
         $answers = $witchManager->selectAnswers();
         return $this->twig->render('Citizen/denounce.html.twig', [
             'answers' => $answers,
-            'questions' => $questions
+            'questions' => $questions,
+            'uploadedImg' => $_SESSION['form-photo'],
+            'similarityRation' => $maxSimilarity,
+            'witchImg' => $similarImg
         ]);
     }
 }
