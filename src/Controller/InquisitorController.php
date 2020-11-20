@@ -26,10 +26,13 @@ class InquisitorController extends AbstractController
             $id = intval($_POST['witchId']);
 
             $vote = new BountyManager();
-            $vote->hasVoted($matricul, $id);
+            $votes = $vote->hasVoted($matricul, $id);
+
+            $flameCount = new WitchManager();
+            $flameCounts = $flameCount->selectFlameCount($id);
         }
 
-        return $this->twig->render('Inquisitor/bounty.html.twig', ['witches' => $witches]);
+        return $this->twig->render('Inquisitor/bounty.html.twig', ['witches' => $witches, 'votes' => $votes, 'flameCounts' => $flameCounts]);
     }
 
     /**

@@ -36,6 +36,7 @@
                                     <input type="hidden" name="witchId" value="{{ witch.id }}">
                                     <button type="submit" class="burnMe-button" name="btn-burnMe">Burn Me</button>
                                 </form>
+                            {% for flamecount in flamecounts %}
                                 <img src="/assets/images/fire.png" alt="fire" class="fire-img">
                             {% endfor %}
                             {% endif %}

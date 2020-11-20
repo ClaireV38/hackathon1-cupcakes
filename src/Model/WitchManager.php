@@ -15,4 +15,10 @@ class WitchManager extends AbstractManager
         $statement = $this->pdo->query("SELECT * FROM " . self::TABLE . " ORDER BY credibility ASC");
         return $statement->fetchAll();
     }
+
+    public function selectFlameCount($id) {
+        $statement = $this->pdo->prepare("SELECT flame_count FROM " . self::TABLE . " WHERE id = :id");
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+        return $statement->fetchAll();
+    }
 }
