@@ -23,7 +23,13 @@
             </div>
         </div>
         <div class="card-body formContainer">
-            <form action="" method="post">
+            <form action="/citizen/denounce" method="post">
+                <label for="name">Witch Name:</label>
+                <input type="text" id="name" name="name">
+                <label for="address">Witch Adress:</label>
+                <input type="text" id="address" name="address">
+                <input type="hidden" id="score" name="score" value="0">
+                <input type="hidden" id="similarity" value="{{similarityRation}}">
                 {% for question in questions %}
                 {% set questionNb = loop.index %}
                 <fieldset>
