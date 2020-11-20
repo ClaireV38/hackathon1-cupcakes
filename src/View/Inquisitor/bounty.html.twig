@@ -1,17 +1,27 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <div class="container-inquisitor-bounty">
-        <div class="container-custom">
-            <h1 class="h1-inquisitor-bounty">Hello {{ inquisitor.name }} !</h1>
+        <div class="container-inquisitor">
+            {% if app.inquisitor %}
+            <h1 class="h1-inquisitor-bounty">Hello {{ app.inquisitor.name }} !</h1>
+            {% endif %}
             {% if witches is defined %}
                 <h5>You will find below the last witches our citizen spotted for you.</h5>
             {% for witch in witches %}
-            <div class="card mb-3 card-inquisitor" style="max-width: 540px;">
-                <div class="row no-gutters">
+            <div class="container container-custom card mb-3 card-inquisitor" style="max-width: 540px;">
+                <div class="row no-gutters image-burnt">
+                    {% if witch.credibility != 100 %}
                     <div class="col-md-4 card-img-inquisitor">
                         <img src="{{ witch.image }}" class="card-img img-inquisitor-witch" alt="{{ witch.image }} ">
                     </div>
+                    {% else %}
+                    <div class="col-md-4 card-img-inquisitor img-sur-witch">
+                        <img src="{{ witch.image }}" class="card-img img-inquisitor-witch" alt="{{ witch.image }} ">
+                        <div class="burn-inquisitor-img">
+                        <p>BURNED</p>
+                        </div>
+                    </div>
+                    {%  endif %}
                     <div class="col-md-8">
                         <div class="card-body">
                             <h5 class="card-title card-inquisitor-title">{{ witch.name }}</h5>
@@ -19,6 +29,27 @@
                             <p class="card-text"><strong>Witch probability:</strong> {{ witch.credibility }} %</p>
                             <p class="card-text"><small class="text-muted"><strong>Last seen on:</strong> {{ witch.create_at|date("M d Y") }}
                                     at {{ witch.create_at|date("H:i") }}</small></p>
+                        </div>
+                        <div class="container-fire">
+                            {% if witch.credibility != 100 and witch.flame_count < 5 %}
+                                <form method="POST" action="/Inquisitor/bounty">
+                                    <input type="hidden" name="witchId" value="{{ witch.id }}">
+                                    <button type="submit" class="burnMe-button" name="btn-burnMe">Burn Me</button>
+                                </form>
+                                {% if witch.flame_count != 0%}
+                                    <div class="fire">
+                                        {% for i in range (0, witch.flame_count - 1) %}
+                                            <div class="fire-one">
+                                                <img src="/assets/images/fire.png" alt="fire" class="fire-img">
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                                <div class="errors">
+                                    {{ errors.flamecount }}
+                                </div>
+                            {% else %}
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -29,5 +60,4 @@
             <h5>There is no witches spotted at the moment ... come back very soon ! </h5>
             {% endif %}
         </div>
-    </div>
 {% endblock %}
