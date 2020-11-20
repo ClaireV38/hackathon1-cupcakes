@@ -192,3 +192,19 @@ nav{
     width: 100%;
     height: auto;
 }
+
+/*
+Employee of the Month
+ */
+ .card-header {
+     background-color: var(--secondary-dark);
+ }
+
+ .titleHunting {
+     border-top: solid var(--secondary-color) 5px;
+     border-bottom: solid var(--secondary-color) 5px;
+
+ }
+ #employeeOfTheMonth {
+     width: auto;
+ }
