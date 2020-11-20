@@ -11,7 +11,7 @@ class BountyManager extends AbstractManager
         parent::__construct(self::TABLE);
     }
 
-    public function hasVoted(int $inquisitorId, int $witchId)
+    public function addVote(int $inquisitorId, int $witchId)
     {
         $statement = $this->pdo->prepare("SELECT id FROM inquisitor WHERE registrationNumber = :inquisitorId");
         $statement->bindValue('inquisitorId', $inquisitorId, \PDO::PARAM_INT);
