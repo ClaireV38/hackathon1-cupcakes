@@ -17,17 +17,18 @@ class InquisitorController extends AbstractController
      */
     public function bounty(): string
     {
-        $matricul = $_SESSION['inquisitor']['registrationNumber'];
+        $matricul = intval($_SESSION['inquisitor']['registrationNumber']);
 
         $witchIdentified = new WitchManager();
         $witches = $witchIdentified->selectAllByLastUpdated();
 
-        //$vote = new BountyManager();
-        //$countVote = $vote->hasVoted($matricul, );
-        //$witch_ID = $witches['id'];
+        if ($_SERVER['REQUEST_METHOD'] === "POST" && isset($_POST['btn-burnMe'])) {
+            $id = intval($_POST['witchId']);
 
-        var_dump($witches);
-        var_dump($matricul);
+            $vote = new BountyManager();
+            $vote->hasVoted($matricul, $id);
+        }
+
         return $this->twig->render('Inquisitor/bounty.html.twig', ['witches' => $witches]);
     }
 

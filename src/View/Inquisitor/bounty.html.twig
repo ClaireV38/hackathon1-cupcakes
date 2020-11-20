@@ -32,8 +32,12 @@
                         </div>
                         <div class="container-fire">
                             {% if witch.credibility != 100 %}
-                                <a href="Inquisitor/bounty">Burn Me</a>
+                                <form method="POST" action="/Inquisitor/bounty">
+                                    <input type="hidden" name="witchId" value="{{ witch.id }}">
+                                    <button type="submit" class="burnMe-button" name="btn-burnMe">Burn Me</button>
+                                </form>
                                 <img src="/assets/images/fire.png" alt="fire" class="fire-img">
+                            {% endfor %}
                             {% endif %}
                         </div>
                     </div>
