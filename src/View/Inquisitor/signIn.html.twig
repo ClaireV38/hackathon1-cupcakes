@@ -1,30 +1,40 @@
 {% extends 'layout.html.twig' %}
 
+{% block title %}
+    Sign in
+{% endblock title %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/signUp-signIn.css">
+{% endblock stylesheet %}
+
 {% block content %}
-<div class="container container-sign-In">
-    <div class="intro-signin">
-        <h2> Signin to discover your next prey</h2>
-    </div>
-    <form method="POST" action="/Inquisitor/signIn" >
-        <div class="form-group">
-            <label for="matricul">Matricul Number</label>
-            <input type="number" class="form-control" id="matricul" name="matricul_number" value="{{ data.matricul }}">
+    <div class="page-content">
+        <div class="container container-signIn">
+            <h2 class="sign-title"> Signin to discover your next prey</h2>
+            <form method="POST" action="/Inquisitor/signIn">
+                <div class="form-group">
+                    <label for="matricul">Matricul Number</label>
+                    <input type="number" class="form-control" id="matricul" name="matricul_number"
+                           value="{{ data.matricul }}">
+                    {% if errors.matricul is defined %}
+                        <span>{{ errors.matricul }}</span>
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    <label for="Password">Password</label>
+                    <input type="password" class="form-control" id="Password" name="password"
+                           value="{{ data.password }}">
+                    {% if errors.password is defined %}
+                        <span>  {{ errors.password }}</span>
+                    {% endif %}
+                </div>
+                <button type="submit" class="btn-go btn-custom btn btn-light" name="btn-signIn">Go !</button>
+            </form>
+            <div class="account-creation">
+                <p class="sign-ask">Want to join us on our journey ? </p>
+                <a href="/Inquisitor/signUp" class="btn-account-creation btn-custom btn btn-light">Create an account</a>
+            </div>
         </div>
-        {% if errors.matricul is defined %}
-            {{ errors.matricul }}
-        {% endif %}
-        <div class="form-group">
-            <label for="Password">Password</label>
-            <input type="password" class="form-control" id="Password" name="password" value="{{ data.password }}">
-        </div>
-        {% if errors.password is defined %}
-            {{ errors.password }}
-        {% endif %}
-        <button type="submit" class="btn-go btn btn-light" name="btn-signIn">Go !</button>
-    </form>
-    <div class="account-creation">
-        <p>Want to join us on our journey ? </p>
-        <a href="/Inquisitor/signUp" class="btn-account-creation btn-custom btn btn-light">Create an account</a>
     </div>
-</div>
 {% endblock %}

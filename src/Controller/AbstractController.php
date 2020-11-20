@@ -43,7 +43,7 @@ abstract class AbstractController
             ]
         );
         $this->twig->addExtension(new DebugExtension());
-
+        $this->twig->addGlobal('post', $_POST);
         if (isset($_SESSION['inquisitor']['registrationNumber']) && !empty($_SESSION['inquisitor']['registrationNumber'])) {
             $inquisitorManager = new InquisitorManager();
             $inquisitor = $inquisitorManager->selectInquisitorByMatricul($_SESSION['inquisitor']['registrationNumber']);

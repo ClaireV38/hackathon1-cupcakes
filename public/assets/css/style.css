@@ -1,3 +1,5 @@
+@import "signUp-signIn.css";
+
 /*
 *
 * ==========================================
@@ -8,13 +10,30 @@
 
 :root{
     --primary-color: #b74747;
-    --secondary-color: #533c2c;
-    --dark: #77261f;
-    --secondary-dark: #3b2c1f;
-    --light: #ee9a98;
+    --secondary-color: #544a47;
+    --dark: #ffffff;
+    --secondary-dark: #a5a5a5;
+    --light: #4f2d1a;
     --primary-transparent: #b7474788;
     --secondary-transparent: #533c2c88;
+    --main-font: 'Secular One', sans-serif;
+    --main-text-color: white;
 }
+
+body {
+    /*display: flex;
+    flex-direction: column;*/
+    min-height: 100vh;
+    background: url("/assets/images/background/homepage-background2.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+/*
+main {
+    flex-grow: 1;
+}*/
 
 /*
 *
@@ -24,29 +43,21 @@
 *
 */
 
-.woodenNavBar {
-    background-image: url("/assets/images/background/wood.jpg");
-    background-repeat: no-repeat;
-    background-size: 100% 200px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+nav{
+    opacity: 0.80;
+    height: 55px;
+    margin: 0;
+    /*align-content: center;
+    justify-content: space-between;*/
 }
 
 .logo {
-    width: 40px;
-    margin-left: 10px;
-    margin-right: 10px;
+    height: 30px;
+    width: 30px;
 }
 
-.navTitle {
-    font-family: Charcoal, sans-serif;
-    font-size: 1em;
-    color: var(--light);
-    text-shadow: 1px 1px 2px var(--dark);
-    margin-right: 13%;
-    margin-top: 4%;
+#logoutbtn{
+    width: 30%;
 }
 
 /*
@@ -57,54 +68,45 @@
 *
 */
 
-.homePage {
-    height: 100vh;
-    background: url("/assets/images/background/background1.jpg") no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.homepage-content-block{
+    margin-top: 100px;
 }
 
-.primaryTitle {
-    font-family: Charcoal, sans-serif;
-    font-size: 2em;
-    color: var(--light);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 200px;
-    background-image: url("/assets/images/background/plate.png");
-    background-repeat: no-repeat;
-    background-size: 100% 200px;
+.homepage-title{
     text-align: center;
-    padding-left: 75px;
-    padding-right: 75px;
-    text-shadow: 1px 1px 2px var(--dark);
+    color: white;
+    font-family: 'Palanquin Dark', sans-serif;
+    -webkit-text-stroke: 1px black;
+    font-size: 30px;
 }
 
-.homeLinks {
+.btn-div{
     display: flex;
     flex-direction: column;
-    align-items: center;
     margin-top: 50px;
+}
+
+.btn {
+    align-self: center;
+    width: 50%;
+    margin: 10px;
 }
 
 .homeButton {
     padding: 15px 25px;
-    font-size: 26px;
+    font-size: 20px;
     text-align: center;
     text-decoration: none;
-    color: var(--light);
+    color: white;
     background-color: var(--secondary-color);
     border: none;
     border-radius: 20px;
-    box-shadow: 0 9px var(--dark);
+    box-shadow: 0 1px var(--dark);
     margin: 15px;
+    width: 70%;
+    align-self: center;
+    font-family: var(--main-font);
+    white-space: nowrap;
 }
 
 .homeButton:hover {
@@ -117,27 +119,6 @@
     background-color: var(--secondary-dark);
     box-shadow: 0 5px var(--dark);
     transform: translateY(4px);
-}
-
-.woodenFooter{
-    bottom:0;
-    width:100%;
-}
-
-.flameFooter {
-    background-image: url("/assets/images/background/flame.gif");
-    background-repeat: no-repeat;
-    width: 100%;
-    text-align: center;
-    padding: 20px;
-}
-
-.footerTitle {
-    font-family: Charcoal, sans-serif;
-    font-size: 1em;
-    color: var(--light);
-    text-shadow: 1px 1px 2px var(--dark);
-    margin-top: 4%;
 }
 
 /*
@@ -170,7 +151,10 @@
 .h1-inquisitor-bounty{
     text-align: center;
 }
-
+.progress_form {
+    display: flex;
+    flex-direction: column;
+}
 .container-custom {
     border-radius: 5px;
     width: 90%;
@@ -217,4 +201,51 @@
 .fire {
     display: flex;
     flex-wrap: wrap;
+}
+/*
+*
+* ==========================================
+* citizen index
+* ==========================================
+*
+*/
+
+.photo-select {
+    display: flex;
+}
+
+.photo-select button {
+    flex-grow: 1;
+}
+
+.hide {
+    display: none;
+}
+
+.snap-resize {
+    width: 100%;
+    height: auto;
+}
+
+
+/*
+*
+* ==========================================
+* citizen denounce
+* ==========================================
+*
+*/
+
+.witch-display {
+    display: flex;
+    align-items: baseline;
+}
+
+.witch-display div {
+    flex-basis: 50%;
+}
+
+.witch-display img {
+    min-width: 0;
+    max-width: 100%;
 }

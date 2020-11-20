@@ -1,1 +1,44 @@
 {% extends 'layout.html.twig' %}
+
+{% block title %}
+    Denunciation
+{% endblock title %}
+
+{% block content %}
+
+    <div class="card text-center">
+        <div class="card-header">
+            <h1>Witch Detector</h1>
+        </div>
+        <div class="witch-display">
+            <div>
+                <img src="/upload/{{ uploadedImg }}" >
+                <p>The witch</p>
+            </div>
+            <div>
+                <img src="/assets/images/confirmed-witch/{{ witchImg }}" >
+                <p>Known witch resemblance: {{ similarityRation }} %</p>
+            </div>
+        </div>
+        <div class="card-body">
+            <form action="" method="post">
+                {% for question in questions %}
+                <h3>{{ loop.index }} : {{ question.text }}</h3>
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect2"></label>
+                        <select multiple class="form-control" id="exampleFormControlSelect2">
+                            {% for answer in answers %}
+                                {% if answer.question_id == question.id %}
+                            <option>{{ answer.text }}</option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                    </div>
+                {% endfor %}
+            </form>
+            <div class="progress">
+                <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
