@@ -36,9 +36,15 @@
                                     <input type="hidden" name="witchId" value="{{ witch.id }}">
                                     <button type="submit" class="burnMe-button" name="btn-burnMe">Burn Me</button>
                                 </form>
-                            {% for flamecount in flamecounts %}
-                                <img src="/assets/images/fire.png" alt="fire" class="fire-img">
-                            {% endfor %}
+                                {% if witch.flame_count is not null %}
+                                    <div class="fire">
+                                        {% for i in range (0, witch.flame_count) %}
+                                            <div class="fire-one">
+                                                <img src="/assets/images/fire.png" alt="fire" class="fire-img">
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
                             {% endif %}
                         </div>
                     </div>

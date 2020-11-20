@@ -213,3 +213,8 @@
     display: flex;
     justify-content: center;
 }
+
+.fire {
+    display: flex;
+    flex-wrap: wrap;
+}

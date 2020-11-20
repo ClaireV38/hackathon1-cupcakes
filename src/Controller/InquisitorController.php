@@ -22,6 +22,7 @@ class InquisitorController extends AbstractController
         $witchIdentified = new WitchManager();
         $witches = $witchIdentified->selectAllByLastUpdated();
 
+        $id = $votes = $flameCount = "";
         if ($_SERVER['REQUEST_METHOD'] === "POST" && isset($_POST['btn-burnMe'])) {
             $id = intval($_POST['witchId']);
 
@@ -30,9 +31,15 @@ class InquisitorController extends AbstractController
 
             $flameCount = new WitchManager();
             $flameCounts = $flameCount->selectFlameCount($id);
+            $flameCount = intval($flameCounts['flame_count']);
+
+            $witches['id']['flame_count'] = $flameCount;
+            var_dump($flameCount);
+            var_dump($id);
         }
 
-        return $this->twig->render('Inquisitor/bounty.html.twig', ['witches' => $witches, 'votes' => $votes, 'flameCounts' => $flameCounts]);
+
+        return $this->twig->render('Inquisitor/bounty.html.twig', ['witches' => $witches, "votes" => $votes, 'flameCount' => $flameCount]);
     }
 
     /**
