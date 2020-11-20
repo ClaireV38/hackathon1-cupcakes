@@ -16,6 +16,12 @@
     --light: #4f2d1a;
     --primary-transparent: #b7474788;
     --secondary-transparent: #533c2c88;
+    --main-font: 'Secular One', sans-serif;
+    --main-text-color: white;
+}
+
+html, body {
+    height: 100vh;
 }
 
 /*
@@ -98,7 +104,7 @@ body {
     margin: 15px;
     width: 70%;
     align-self: center;
-    font-family: 'Secular One', sans-serif;
+    font-family: var(--main-font);
     white-space: nowrap;
 }
 
