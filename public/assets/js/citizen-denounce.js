@@ -1,10 +1,11 @@
 const progressBar = document.getElementById('progress-bar');
 const inputs = document.querySelectorAll('input');
 const scoreInput = document.getElementById('score');
+const similirityValue = parseInt(document.getElementById('similarity').value);
 calcScore();
 
 function calcScore() {
-    let score = 0;
+    let score = similirityValue;
     inputs.forEach(
         input => {
             if (input.checked) {
