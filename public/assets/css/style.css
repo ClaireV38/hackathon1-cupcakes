@@ -394,3 +394,8 @@ Employee of the Month
 .formInput {
     margin-bottom: 20px;
 }
+
+.backgroundHorror {
+    background-image: url("/assets/images/background/horror.jpg");
+    background-size: cover;
+}
