@@ -19,9 +19,10 @@
 
 <body class="home-page-body">
 <nav class="navbar navbar-light bg-light">
+
     <a class="navbar-brand" href="/"><img src="/assets/images/witch.png" class="logo"></a>
-    <a href="/employee/index" class="btn btn-outline-success" id="employeeOfTheMonth"> Top of the Month </a>
     {% if app.inquisitor %}
+        <a href="/employee/index" class="btn btn-outline-success" id="employeeOfTheMonth"> Top of the Month </a>
         <a href="/Inquisitor/logout" class="btn btn-outline-danger" id="logoutbtn">Logout</a>
     {% endif %}
 </nav>
