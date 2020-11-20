@@ -1,0 +1,28 @@
+{% extends 'layout.html.twig' %}
+{% block title %}
+    Employee of the month
+{% endblock title %}
+
+{% block content %}
+
+    <div class="card" style="width: 18rem; text-align: center; margin: auto; margin-top: 10px">
+        <div class="card-header" style="padding: 0">
+            <h3>Employee of the Month <span class="fas fa-thumbs-up" style="color:black"></span></h3>
+
+        </div>
+        <img class="card-img-top" src="https://www.photosmarval.org/images/renaissance/real/el-greco-Fernando-Nino-Guevana.jpg" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">Fernando Nino de Guevana</h5>
+            <p class="card-text">Fernando is always on time and ready to detect // burn some witches . His hollyness is really happy with Fernando's work, he is a great exemple for his fellow coworker !</p>
+        </div>
+        <div class="titleHunting">
+            <h4 style="margin-top: 5px">Hunting board</h4>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item fas fa-skull-crossbones"> Ursula</li>
+            <li class="list-group-item fas fa-skull-crossbones"> Mary poppins</li>
+            <li class="list-group-item fas fa-skull-crossbones"> Glinda the good witch</li>
+        </ul>
+    </div>
+
+{% endblock %}

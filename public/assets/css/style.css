@@ -47,8 +47,8 @@ nav{
     opacity: 0.80;
     height: 55px;
     margin: 0;
-    /*align-content: center;
-    justify-content: space-between;*/
+    align-content: center;
+    justify-content: space-between;
 }
 
 .logo {
@@ -227,6 +227,21 @@ nav{
     height: auto;
 }
 
+/*
+Employee of the Month
+ */
+ .card-header {
+     background-color: var(--secondary-dark);
+ }
+
+ .titleHunting {
+     border-top: solid var(--secondary-color) 5px;
+     border-bottom: solid var(--secondary-color) 5px;
+
+ }
+ #employeeOfTheMonth {
+     width: auto;
+ }
 
 /*
 *
@@ -253,3 +268,4 @@ nav{
 .card-body fieldset ul {
     padding-left: 0;
 }
+

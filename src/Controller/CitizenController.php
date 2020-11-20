@@ -83,7 +83,6 @@ class CitizenController extends AbstractController
             }
         }
         closedir($witchDir);
-
         $questionManager = new QuestionManager();
         $questions = $questionManager->selectQuestions();
         $answers = $questionManager->selectAnswers();

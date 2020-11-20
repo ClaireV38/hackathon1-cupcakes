@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Palanquin+Dark:wght@700&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     {% block stylesheet %}{% endblock %}
     <link rel="icon" href="/assets/images/witch.png">
 </head>
@@ -19,6 +20,7 @@
 <body class="home-page-body">
 <nav class="navbar navbar-light bg-light">
     <a class="navbar-brand" href="/"><img src="/assets/images/witch.png" class="logo"></a>
+    <a href="/employee/index" class="btn btn-outline-success" id="employeeOfTheMonth"> Top of the Month </a>
     {% if app.inquisitor %}
         <a href="/Inquisitor/logout" class="btn btn-outline-danger" id="logoutbtn">Logout</a>
     {% endif %}
