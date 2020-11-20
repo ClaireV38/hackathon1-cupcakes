@@ -9,13 +9,13 @@
 */
 
 :root{
-    --primary-color: #b74747;
+    --primary-color: #9d5d5d;
     --secondary-color: #544a47;
     --dark: #ffffff;
     --secondary-dark: #a5a5a5;
     --light: #4f2d1a;
     --primary-transparent: #b7474788;
-    --secondary-transparent: #533c2c88;
+    --secondary-transparent: #a5a5a588;
     --main-font: 'Secular One', sans-serif;
     --main-text-color: white;
 }
@@ -260,7 +260,9 @@ Employee of the Month
 
 .witch-display {
     display: flex;
-    align-items: baseline;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--primary-color);
 }
 
 .witch-display div {
@@ -279,5 +281,58 @@ Employee of the Month
 .formInputRadio {
     background-color: var(--secondary-dark);
     height: auto;
+    border-radius: 10px;
+    font-size: 1.2em;
+    font-weight: bold;
 }
 
+.formContainer {
+    background-color: var(--secondary-transparent);
+}
+
+.questionTitle {
+    color: white;
+    font-weight: bold;
+    background-image: url("/assets/images/background/wood.jpg");
+    background-size: cover;
+    border-radius: 20px;
+    padding: 5px;
+    box-shadow: 0 5px var(--secondary-color);
+}
+
+.suspectPicture img {
+    border-radius: 20%;
+    max-height: 200px;
+    border: solid 3px var(--secondary-color);
+}
+
+.suspectPicture p {
+    background-image: url("/assets/images/background/wood.jpg");
+    background-size: cover;
+    margin-top: 5px;
+    font-size: 1.2em;
+    color: white;
+    font-weight: bold;
+    border-radius: 20px;
+    padding: 5px;
+    box-shadow: 0 5px var(--secondary-color);
+}
+
+.suspectPicture {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 5px;
+}
+
+.card-header {
+    font-weight: bold;
+    background-image: url("/assets/images/background/wood.jpg");
+    background-size: cover;
+    padding: 5px;
+    box-shadow: 0 5px var(--secondary-color);
+}
+.card-header h1 {
+    color: white;
+    font-weight: bold;
+}
