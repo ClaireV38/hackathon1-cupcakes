@@ -22,4 +22,8 @@ class WitchManager extends AbstractManager
         $statement->execute();
         return $statement->fetch();
     }
+
+    public function updateCredibilityWhenFlamecountIsFull() {
+        $this->pdo->exec("UPDATE " . self::TABLE . " SET credibility = 100 WHERE flame_count >= 5");
+    }
 }

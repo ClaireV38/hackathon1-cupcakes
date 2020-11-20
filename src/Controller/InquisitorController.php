@@ -19,25 +19,26 @@ class InquisitorController extends AbstractController
     {
         $matricul = intval($_SESSION['inquisitor']['registrationNumber']);
 
-        $witchIdentified = new WitchManager();
-        $witches = $witchIdentified->selectAllByLastUpdated();
+        $witchManager = new WitchManager();
 
         $id = $votes = $flameCount = "";
         if ($_SERVER['REQUEST_METHOD'] === "POST" && isset($_POST['btn-burnMe'])) {
             $id = intval($_POST['witchId']);
 
-            $vote = new BountyManager();
-            $votes = $vote->hasVoted($matricul, $id);
+            $voteManager = new BountyManager();
+            $votes = $voteManager->hasVoted($matricul, $id);
 
-            $flameCount = new WitchManager();
-            $flameCounts = $flameCount->selectFlameCount($id);
+            $flameCounts = $witchManager->selectFlameCount($id);
             $flameCount = intval($flameCounts['flame_count']);
 
+            $witchManager->updateCredibilityWhenFlamecountIsFull();
+
             $witches['id']['flame_count'] = $flameCount;
-            var_dump($flameCount);
-            var_dump($id);
+
+            header("Location: /Inquisitor/bounty/");
         }
 
+        $witches = $witchManager->selectAllByLastUpdated();
 
         return $this->twig->render('Inquisitor/bounty.html.twig', ['witches' => $witches, "votes" => $votes, 'flameCount' => $flameCount]);
     }

@@ -31,20 +31,24 @@
                                     at {{ witch.create_at|date("H:i") }}</small></p>
                         </div>
                         <div class="container-fire">
-                            {% if witch.credibility != 100 %}
+                            {% if witch.credibility != 100 and witch.flame_count < 5 %}
                                 <form method="POST" action="/Inquisitor/bounty">
                                     <input type="hidden" name="witchId" value="{{ witch.id }}">
                                     <button type="submit" class="burnMe-button" name="btn-burnMe">Burn Me</button>
                                 </form>
-                                {% if witch.flame_count is not null %}
+                                {% if witch.flame_count is not null%}
                                     <div class="fire">
-                                        {% for i in range (0, witch.flame_count) %}
+                                        {% for i in range (-1, witch.flame_count) %}
                                             <div class="fire-one">
                                                 <img src="/assets/images/fire.png" alt="fire" class="fire-img">
                                             </div>
                                         {% endfor %}
                                     </div>
                                 {% endif %}
+                                <div class="errors">
+                                    {{ errors.flamecount }}
+                                </div>
+                            {% else %}
                             {% endif %}
                         </div>
                     </div>
