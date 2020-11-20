@@ -43,12 +43,14 @@ class CitizenController extends AbstractController
             }
         } elseif (isset($_POST['snap-form'])) {
             $img = $_POST['photo'] ?? "";
-            $img = str_replace('data:image/png;base64,', '', $img);
-            $img = str_replace(' ', '+', $img);
-            $data = base64_decode($img);
-            $newFileName = md5(uniqid("" . rand() . time(), true)) . '.png';
-            $file = ROOTPATH . '/public/upload/' . $newFileName;
-            $success = file_put_contents($file, $data);
+            if (!empty($img)) {
+                $img = str_replace('data:image/png;base64,', '', $img);
+                $img = str_replace(' ', '+', $img);
+                $data = base64_decode($img);
+                $newFileName = md5(uniqid("" . rand() . time(), true)) . '.png';
+                $file = ROOTPATH . '/public/upload/' . $newFileName;
+                $success = file_put_contents($file, $data);
+            }
         }
         if ($success) {
             $_SESSION['form-photo'] = $newFileName;
@@ -64,12 +66,12 @@ class CitizenController extends AbstractController
             die();
         }
         $uploadedImg = ROOTPATH . '/public/upload/'.$_SESSION['form-photo'];
-        /*if (file_exists($uploadedImg)) {
+        if (file_exists($uploadedImg)) {
             (new ImgBgLessGenerator())->createBgLessImg($uploadedImg);
         } else {
             unset($_SESSION['form-photo']);
             header('Location:/citizen/index');
-        }*/
+        }
         $imgCmp = new ImageCompare();
         $maxSimilarity = 0;
         $similarImg = "";
