@@ -9,14 +9,12 @@ function calcScore() {
     inputs.forEach(
         input => {
             if (input.checked) {
-                console.log(input.value);
                 score += parseInt(input.value);
             }
         }
     );
     score = score>100? 100 :
         score<0? 0 : score;
-    console.log(score);
     progressBar.style.width = score + '%';
     scoreInput.value = score
 }
