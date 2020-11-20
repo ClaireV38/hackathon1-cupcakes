@@ -333,6 +333,54 @@ Employee of the Month
     box-shadow: 0 5px var(--secondary-color);
 }
 .card-header h1 {
+    text-align: center;
     color: white;
     font-weight: bold;
+}
+
+.pictureUploader {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.photo-select button {
+    width: 60%;
+    margin-top: 5%;
+}
+
+.lilHomeButton {
+    padding: 10px 20px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    background-color: var(--secondary-color);
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 1px var(--dark);
+    margin: 15px;
+    width: 50%;
+    align-self: center;
+    font-family: var(--main-font);
+    white-space: nowrap;
+}
+
+.lilHomeButton:hover {
+    background-color: var(--secondary-dark);
+    text-decoration: none;
+    color : var(--light);
+}
+
+.lilHomeButton:active {
+    background-color: var(--secondary-dark);
+    box-shadow: 0 5px var(--dark);
+    transform: translateY(4px);
+}
+
+.snapFlex {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
