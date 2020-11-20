@@ -215,3 +215,7 @@ nav{
     min-width: 0;
     max-width: 100%;
 }
+
+.card-body fieldset ul {
+    padding-left: 0;
+}
