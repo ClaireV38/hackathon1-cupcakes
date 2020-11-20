@@ -269,3 +269,8 @@ Employee of the Month
     padding-left: 0;
 }
 
+.formInputRadio {
+    background-color: var(--secondary-dark);
+    height: auto;
+}
+
