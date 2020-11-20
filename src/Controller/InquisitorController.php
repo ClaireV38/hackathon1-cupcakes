@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Model\BountyManager;
 use App\Model\InquisitorManager;
 use App\Model\WitchManager;
 
@@ -14,6 +15,7 @@ class InquisitorController extends AbstractController
     }
 
     /**
+     * Display all witches
      * @return string
      * @throws \Twig\Error\LoaderError
      * @throws \Twig\Error\RuntimeError
@@ -21,9 +23,30 @@ class InquisitorController extends AbstractController
      */
     public function bounty(): string
     {
-        $witchIdentified = new WitchManager();
-        $witches = $witchIdentified->selectAll();
-        return $this->twig->render('Inquisitor/bounty.html.twig', ['witches' => $witches]);
+        $matricul = intval($_SESSION['inquisitor']['registrationNumber']);
+
+        $witchManager = new WitchManager();
+
+        $id = $votes = $flameCount = "";
+        if ($_SERVER['REQUEST_METHOD'] === "POST" && isset($_POST['btn-burnMe'])) {
+            $id = intval($_POST['witchId']);
+
+            $voteManager = new BountyManager();
+            $votes = $voteManager->hasVoted($matricul, $id);
+
+            $flameCounts = $witchManager->selectFlameCount($id);
+            $flameCount = intval($flameCounts['flame_count']);
+
+            $witchManager->updateCredibilityWhenFlamecountIsFull();
+
+            $witches['id']['flame_count'] = $flameCount;
+
+            header("Location: /Inquisitor/bounty/");
+        }
+
+        $witches = $witchManager->selectAllByLastUpdated();
+
+        return $this->twig->render('Inquisitor/bounty.html.twig', ['witches' => $witches, "votes" => $votes, 'flameCount' => $flameCount]);
     }
 
     /**
