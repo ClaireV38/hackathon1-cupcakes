@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Model\AnswerManager;
 use App\Model\WitchManager;
 use App\ImgBgLessGenerator\ImgBgLessGenerator;
+use App\Model\QuestionManager;
 use BigV\ImageCompare;
 
 class CitizenController extends AbstractController
@@ -83,9 +85,9 @@ class CitizenController extends AbstractController
         }
         closedir($witchDir);
 
-        $witchManager = new WitchManager();
-        $questions = $witchManager->selectQuestions();
-        $answers = $witchManager->selectAnswers();
+        $questionManager = new QuestionManager();
+        $questions = $questionManager->selectQuestions();
+        $answers = $questionManager->selectAnswers();
         return $this->twig->render('Citizen/denounce.html.twig', [
             'answers' => $answers,
             'questions' => $questions,
