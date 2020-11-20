@@ -24,6 +24,15 @@ html, body {
     height: 100vh;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex-grow: 1;
+}
+
 /*
 *
 * ==========================================
@@ -68,7 +77,6 @@ body {
 
 .homepage-content-block{
     margin-top: 100px;
-
 }
 
 .homepage-title{
