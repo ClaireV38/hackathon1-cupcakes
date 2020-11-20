@@ -39,7 +39,7 @@
                                 {% if witch.flame_count != 0%}
                                     <div class="fire">
                                         {% for i in range (0, witch.flame_count - 1) %}
-                                            {% if errors is same as ('') %}
+                                            {% if error is same as ('') or errorId != witch.id %}
                                             <div class="fire-one">
                                                 <img src="/assets/images/fire.png" alt="fire" class="fire-img">
                                             </div>
@@ -49,9 +49,11 @@
                                 {% endif %}
                             {% else %}
                             {% endif %}
+                            {% if errorId == witch.id %}
                             <div class="errors">
-                                {{ errors }}
+                                {{ error }}
                             </div>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

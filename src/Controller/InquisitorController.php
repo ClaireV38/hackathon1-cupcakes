@@ -27,7 +27,7 @@ class InquisitorController extends AbstractController
 
         $witchManager = new WitchManager();
 
-        $id = $votes = $flameCount = $hasVoted = $errors = "";
+        $id = $votes = $flameCount = $hasVoted = $error = $errorId = "";
         if ($_SERVER['REQUEST_METHOD'] === "POST" && isset($_POST['btn-burnMe'])) {
             $id = intval($_POST['witchId']);
 
@@ -38,13 +38,14 @@ class InquisitorController extends AbstractController
                 $witchManager->updateCredibilityWhenFlamecountIsFull();
                 header("Location: /Inquisitor/bounty/");
             } catch (\PDOException $e) {
-                    $errors = "You aready voted to burn this witch ! ";
+                    $error = "You aready voted to burn this witch ! ";
+                    $errorId = $id;
             }
         }
 
         $witches = $witchManager->selectAllByLastUpdated();
 
-        return $this->twig->render('Inquisitor/bounty.html.twig', ['witches' => $witches, "votes" => $votes, "errors" => $errors]);
+        return $this->twig->render('Inquisitor/bounty.html.twig', ['witches' => $witches, "votes" => $votes, "error" => $error, "errorId" => $errorId]);
     }
 
     /**
