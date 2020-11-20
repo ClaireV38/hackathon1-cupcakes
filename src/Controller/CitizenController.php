@@ -66,12 +66,12 @@ class CitizenController extends AbstractController
             die();
         }
         $uploadedImg = ROOTPATH . '/public/upload/'.$_SESSION['form-photo'];
-        if (file_exists($uploadedImg)) {
+        /*if (file_exists($uploadedImg)) {
             (new ImgBgLessGenerator())->createBgLessImg($uploadedImg);
         } else {
             unset($_SESSION['form-photo']);
             header('Location:/citizen/index');
-        }
+        }*/
         $imgCmp = new ImageCompare();
         $maxSimilarity = 0;
         $similarImg = "";

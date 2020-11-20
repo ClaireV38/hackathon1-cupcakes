@@ -51,11 +51,10 @@ DROP TABLE IF EXISTS `bounty`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `bounty` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `inquisitor_id` int DEFAULT NULL,
-  `witch_id` int DEFAULT NULL,
+  `inquisitor_id` int NOT NULL,
+  `witch_id` int NOT NULL,
   `has_voted` tinyint(1) DEFAULT NULL,
-  PRIMARY KEY (`id`),
+  PRIMARY KEY (`inquisitor_id`,`witch_id`),
   KEY `bounty_inquisitor_id_fk` (`inquisitor_id`),
   KEY `bounty_witch_id_fk` (`witch_id`),
   CONSTRAINT `bounty_inquisitor_id_fk` FOREIGN KEY (`inquisitor_id`) REFERENCES `inquisitor` (`id`),
@@ -148,7 +147,7 @@ CREATE TABLE `witch` (
 
 LOCK TABLES `witch` WRITE;
 /*!40000 ALTER TABLE `witch` DISABLE KEYS */;
-INSERT INTO `witch` VALUES (1,'https://i.ytimg.com/vi/9nlhmJF5FNI/maxresdefault.jpg','Paris','The Parisian Witch',100,'2020-11-19 19:35:27',NULL),(2,'https://pyxis.nymag.com/v1/imgs/2fd/a32/583539cc06ab31db9ebb0a0e7c52e10f5b-31-witch-ranking.rsocial.w1200.jpg','Hambourg Avenue','Ugly Betty',100,'2020-11-19 19:35:36',NULL),(3,'https://pyxis.nymag.com/v1/imgs/2fd/a32/583539cc06ab31db9ebb0a0e7c52e10f5b-31-witch-ranking.rsocial.w1200.jpg','In the woods, the 3rd tree on the left','Capricorne',60,'2020-11-19 23:17:37',NULL),(4,'https://images.ladbible.com/resize?type=jpeg&url=http://beta.ems.ladbiblegroup.com/s3/content/58a913b25db91908175584aab917e93b.png&quality=70&width=720&aspectratio=16:9&extend=white','Above the sky','Too Late',30,'2020-11-20 01:43:20',0);
+INSERT INTO `witch` VALUES (1,'https://i.ytimg.com/vi/9nlhmJF5FNI/maxresdefault.jpg','Paris','The Parisian Witch',100,'2020-11-19 19:35:27',NULL),(2,'https://pyxis.nymag.com/v1/imgs/2fd/a32/583539cc06ab31db9ebb0a0e7c52e10f5b-31-witch-ranking.rsocial.w1200.jpg','Hambourg Avenue','Ugly Betty',100,'2020-11-19 19:35:36',NULL),(3,'https://pyxis.nymag.com/v1/imgs/2fd/a32/583539cc06ab31db9ebb0a0e7c52e10f5b-31-witch-ranking.rsocial.w1200.jpg','In the woods, the 3rd tree on the left','Capricorne',0,'2020-11-19 23:17:37',0),(4,'https://images.ladbible.com/resize?type=jpeg&url=http://beta.ems.ladbiblegroup.com/s3/content/58a913b25db91908175584aab917e93b.png&quality=70&width=720&aspectratio=16:9&extend=white','Above the sky','Too Late',60,'2020-11-20 01:43:20',4);
 /*!40000 ALTER TABLE `witch` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -189,4 +188,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-11-20  2:18:27
+-- Dump completed on 2020-11-20 11:22:54
