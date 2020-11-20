@@ -151,6 +151,13 @@ nav{
 .h1-inquisitor-bounty{
     text-align: center;
 }
+.progress {
+    width: 100%;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    height: 30px;
+}
 .progress_form {
     display: flex;
     flex-direction: column;
