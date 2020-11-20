@@ -113,8 +113,6 @@ class CitizenController extends AbstractController
                     header('Location:/');
                     die();
                 }
-            } else {
-                var_dump($errors);
             }
         }
 
