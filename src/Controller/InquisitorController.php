@@ -46,7 +46,6 @@ class InquisitorController extends AbstractController
                 $errors['password'] = "Required";
             }
             if (empty($errors)) {
-                // log user in DB
                 $inquisitorManager = new InquisitorManager();
                 $inquisitor = $inquisitorManager->selectInquisitorByMatricul($matricul);
                 if (!$inquisitor) {
